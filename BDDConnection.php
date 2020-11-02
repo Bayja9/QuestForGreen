@@ -4,7 +4,7 @@
 //=======================
 try
 	{
-		$bdd = new PDO('mysql:host=localhost;dbname=test_login', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=questforgreen', 'questforgreen', 'WorkShopB3E14');
 	}
 	catch(Exception $e)
 	{
