@@ -1,5 +1,9 @@
-<?php require "header.php" ?>
+<!DOCTYPE html>
+<html>
+    <?php require "header.php" ?>
+    <body>
 
 
-
-<?php require "footer.php" ?>
+        <?php require "js.php" ?>
+    </body>
+</html>
