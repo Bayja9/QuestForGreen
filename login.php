@@ -1,9 +1,13 @@
-<?php 
-    require "header.php";
-    require "BDDConnection.php";
-?>
-
-<!--=====================================================
+<!DOCTYPE html>
+<html>
+    <header>
+        <?php 
+            
+            require "header.php" ; 
+        ?>
+    </header>
+    <body>
+        <!--=====================================================
 /       Affichage du formulaire de connexion            /
 ======================================================-->
 <div class="container">
@@ -58,5 +62,8 @@
         }        
     }
 ?>
-
-<?php require "footer.php" ?>
+        <?php
+            require "import-js.php" ;
+        ?>
+    </body>
+</html>
