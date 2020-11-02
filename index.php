@@ -11,8 +11,11 @@
 
             //if(!isset($_SESSION['email']))
             //{
-                header('Location: login.php');
-                exit();
+                ?>
+                    <script>
+                        document.location.href="login.php";
+                    </script>
+                <?php
             //}
 
             require "import-js.php" ;
