@@ -11,16 +11,19 @@
         /       Affichage du formulaire de connexion            /
         ======================================================-->
         <div class="container">
+            <h2>Authentification</h2>
             <form method="post" action"#">
                 <div class="form-group">
-                    <label for="exampleInputlogin1">Identifiant</label>
-                    <input name="login" type="text" class="form-control" id="exampleInputlogin1" aria-describedby="loginHelp" placeholder="Adresse email ou pseudonyme">
+                    <label for="login">Identifiant</label>
+                    <input name="login" type="text" class="form-control" id="login" aria-describedby="loginHelp" placeholder="Adresse email ou pseudonyme">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Mot de passe</label>
-                    <input name="mdp" type="password" class="form-control" id="exampleInputPassword1" placeholder="Votre mot de passe">
+                    <label for="mdp">Mot de passe</label>
+                    <input name="mdp" type="password" class="form-control" id="mdp" placeholder="Votre mot de passe">
                 </div>
                 <button type="submit" class="btn btn-primary">Connexion</button>
+                <br>
+                <a href="register.php">Créer un compte ?</a>
             </form>
         </div>
 
