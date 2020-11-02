@@ -1,5 +1,21 @@
-<?php require "header.php" ?>
+<!DOCTYPE html>
+<html>
+    <header>
+        <?php 
+            require "header.php" ; 
+        ?>
+    </header>
+    <body>
 
+        <?php
 
+            if(!isset($_SESSION['email']))
+            {
+                header('Location: login.php');
+                exit();
+            }
 
-<?php require "footer.php" ?>
+            require "import-js.php" ;
+        ?>
+    </body>
+</html>
