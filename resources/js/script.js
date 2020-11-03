@@ -32,3 +32,61 @@ function register() {
     }
     xmlhttp.send();
 }
+
+function sendFormEditUsername() {
+    var xmlhttp = new XMLHttpRequest();
+    var pseudo = document.getElementById("pseudo").value;
+    var labelLogin = document.createElement("label");
+    xmlhttp.open("GET", "editUsernameSubmit.php?pseudo=" + pseudo, true);
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            labelLogin.innerHTML = this.responseText;
+            document.getElementById("showFormEditUsername").style.display = "none";
+            document.getElementById("showButtonEditUsername").style.display = "none";
+            document.getElementById('getResponseEditUsername').innerHTML = "";
+            document.querySelector(".getResponseEditUsername").appendChild(labelLogin);
+        }
+    }
+    xmlhttp.send();
+}
+
+function sendFormEditEmail() {
+    var xmlhttp = new XMLHttpRequest();
+    var email = document.getElementById("email").value;
+    var labelLogin = document.createElement("label");
+    xmlhttp.open("GET", "editEmailSubmit.php?email=" + email, true);
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            labelLogin.innerHTML = this.responseText;
+            document.getElementById("showFormEditEmail").style.display = "none";
+            document.getElementById("showButtonEditEmail").style.display = "none";
+            document.getElementById('getResponseEditEmail').innerHTML = "";
+            document.querySelector(".getResponseEditEmail").appendChild(labelLogin);
+        }
+    }
+    xmlhttp.send();
+}
+
+
+function initPageProfile() {
+    document.getElementById("showFormEditUsername").style.display = "none";
+    document.getElementById("showFormEditEmail").style.display = "none";
+}
+
+function showFormEditUsername() {
+    document.getElementById("showFormEditUsername").style.display = "block";
+    document.getElementById("showButtonEditUsername").style.display = "none";
+}
+
+function showFormEditEmail() {
+    document.getElementById("showFormEditEmail").style.display = "block";
+    document.getElementById("showButtonEditEmail").style.display = "none";
+}
+
+function showLogin() {
+    document.location.href = "../Login";
+}
+
+function showProfile() {
+    document.location.href = "../Profile";
+}
