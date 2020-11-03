@@ -45,6 +45,7 @@ body {
     height: 700px;
     background: #fff6d5;
     padding: 25px;
+    border: 2px solid grey
 }
 .blockpage1{
     display: flex;

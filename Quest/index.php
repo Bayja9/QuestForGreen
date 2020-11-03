@@ -14,7 +14,7 @@
                 </g>
             </svg>
         </div>
-        <div id="retour">
+        <div id="retour" onclick="back()">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="300" height="300" viewBox="0 0 300 300" xml:space="preserve">
             <desc>Created with Fabric.js 4.2.0</desc>
             <defs>
@@ -68,6 +68,9 @@
         </div>
         <?php require "..\import-js.php" ?>
         <script>
+            function back(){
+                document.location.href = "/QuestForGreen/Home";
+            };
             var deg = 0;
             var pos = 0;
             var lastpos = 0;

@@ -51,7 +51,8 @@ body{
     top: 15px;
     left: 50%;
     transform: translateX(-50%);
-    text-align: center;
+    justify-content: center;
+    display: flex;
 }
 
 .progress {
@@ -111,6 +112,9 @@ body{
     color: green;
     transition: all 100ms ease-in-out;
     transform: scale(1.1);
+}
+#Slots div{
+    width: fit-content;
 }
 #power{
     position: absolute;
