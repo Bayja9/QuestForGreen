@@ -1,1 +1,41 @@
 /* Fichier pour vos scripts JavaScript */
+@font-face {
+    font-family: "Aclonica";
+    src: url("../font/Aclonica-Regular.woff2") format("woff2"),
+    url("../font/Aclonica-Regular.woff") format("woff");
+}
+body {
+    background-image: url('../img/city.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.font-Aclonica{
+    font-family: "Aclonica";
+}
+.title-login{
+    color: #629c44;
+    font-weight: bold;
+}
+.login{
+    position: absolute;
+    left: 70%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: 60%;
+}
+.login-container{
+    background: #ffffffc2;
+    padding: 20px;
+    border: solid #000 1px;
+    border-radius: 10px;
+}
+.forgotten-password{
+    font-size: 12px;
+}
+.btn-login{
+    background-color: #629c44;
+    color: white;
+}
