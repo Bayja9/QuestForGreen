@@ -26,16 +26,16 @@ class utilisateur
 		/* class utilisateur Constructeur */
 		/* ---------------------- */
 
-			Public function utilisateur ($id_util, $user_util, $pass_util, $xp_util, $pts_util, $mail_util, $etat_util)
+			Public function __construct ($id_util, $user_util, $pass_util, $xp_util, $pts_util, $mail_util, $etat_util)
 			{
 
-				$this ->id_utilisateur = $id_util;
-				$this ->username_utilisateur = $user_util;
-				$this ->password_utilisateur = $pass_util;
-                $this ->xp_utilisateur = $xp_util;
-                $this ->points_utilisateur = $pts_util;
-                $this ->mail_utilisateur = $mail_util;
-                $this ->etat_utilisateur = $etat_util;
+				$this->id_utilisateur = $id_util;
+				$this->username_utilisateur = $user_util;
+				$this->password_utilisateur = $pass_util;
+                $this->xp_utilisateur = $xp_util;
+                $this->points_utilisateur = $pts_util;
+                $this->mail_utilisateur = $mail_util;
+                $this->etat_utilisateur = $etat_util;
 
 			}
 
@@ -163,8 +163,8 @@ class utilisateur
 					$etat_util= $objet->get_etat_utilisateur();
 
 				
-					print $SQL = "UPDATE utilisateur SET id_utilisateur = '$id_util', username_utilisateur  = '$user_util', password_utilisateur = '$pass_util'
-          			xp_utilisateur  = '$xp_util', points_utilisateur  = '$pts_util', etat_utilisateur  = '$etat_util'
+					print $SQL = "UPDATE utilisateur SET id_utilisateur = '$id_util', username_utilisateur  = '$user_util', password_utilisateur = '$pass_util',
+          			etat_utilisateur  = '$etat_util'
 					WHERE id_utilisateur = '$id_util'";
 				 	$Req = $conn -> query ($SQL) or die (' Erreur modification utilisateur ');
 				}
