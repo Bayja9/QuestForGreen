@@ -15,7 +15,7 @@
         </div>
 
         <?php
-            require "includes/import-js.php" ;
+            require "../includes/import-js.php" ;
         ?>
     </body>
 </html>
