@@ -19,11 +19,11 @@
                 {
                     if(strpos($login,"@"))
                     {
-                        $requete = $bdd->prepare("SELECT * from login where email = :login");
+                        $requete = $bdd->prepare("SELECT * from utilisateur where mail_utilisateur = :login");
                     }
                     else
                     {
-                        $requete = $bdd->prepare("SELECT * from login where pseudo = :login");
+                        $requete = $bdd->prepare("SELECT * from utilisateur where username_utilisateur = :login");
                     }
                     $requete->bindParam(':login', $login);
                     
@@ -31,11 +31,11 @@
                     $requete->execute();
                     $data=$requete->fetch();
 
-                    if (md5($mdp) == $data['mdp']) // Acces OK !
+                    if (md5($mdp) == $data['password_utilisateur']) // Acces OK !
                     {
-                        $_SESSION['id'] = $data['id'];
-                        $_SESSION['email'] = $data['email'];	
-                        $_SESSION['pseudo'] = $data['pseudo'];	
+                        $_SESSION['id'] = $data['id_utilisateur'];
+                        $_SESSION['email'] = $data['mail_utilisateur'];	
+                        $_SESSION['pseudo'] = $data['username_utilisateur'];	
                         echo'<div class="alert alert-success">Authentification Réussi</div>';
                     }
                     else
