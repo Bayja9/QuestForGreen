@@ -4,6 +4,6 @@
     <body>
 
 
-        <?php require "js.php" ?>
+        <?php require "import-js.php" ?>
     </body>
 </html>
