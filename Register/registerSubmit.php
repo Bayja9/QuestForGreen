@@ -2,7 +2,8 @@
         /             Traitement de la création de compte       /
         ======================================================-->
         <?php
-            require "../includes/header.php" ; 
+            session_start();
+            require "../includes/BDDConnection.php";
 
             if(isset($_GET["email"]))
             {
@@ -68,6 +69,4 @@
                     echo'<div class="alert alert-warning">Quelque chose s\'est mal passé, vérifiez que vous avez rempli tous les champs</div>';
                 }
             }
-
-            require "../includes/import-js.php" ;
         ?>

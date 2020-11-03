@@ -2,10 +2,14 @@
 <html>
     <header>
         <?php 
-            
-            require "../includes/header.php" ; 
+            session_start();
+            require "../includes/BDDConnection.php";
         ?>
+        <link rel="stylesheet" href="/QuestForGreen/resources/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
     </header>
+    <link rel="icon" type="image/png" href="../resources/img/logoV2.png" />
+
     <body>
         <!--=====================================================
         /       Affichage du formulaire de création de compte   /

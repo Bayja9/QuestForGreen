@@ -7,7 +7,12 @@ function connect() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("getResponseConnect").innerHTML = this.responseText;
-            document.location.href="/QuestForGreen/Home/";
+            
+            setTimeout(() => {
+                if (document.querySelector(".alert-success")) {
+                    document.location.href="/QuestForGreen/Home/";
+                }
+            }, 300);
         }
     }
     xmlhttp.send();
