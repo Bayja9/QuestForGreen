@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <?php require "../includes/header.php" ?>
+<head>
+        <?php
+            session_start();
+            require "../includes/BDDConnection.php";
+            if(!isset($_SESSION['email']))
+            {
+                ?>
+                    <script>
+                        document.location.href="/QuestForGreen/Login/";
+                    </script>
+                <?php
+            }
+        ?>
+        <link rel="stylesheet" href="/QuestForGreen/resources/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    </head>
+<link rel="icon" type="image/png" href="../resources/img/logoV2.png" />
     <LINK rel="stylesheet" href="../resources/css/home.css"/>
     <title>QuestForGreen - Home</title>
     <body>
@@ -64,7 +79,7 @@
         <?php require "../includes/import-js.php" ?>
         <script>
             function profile() {
-                document.location.href = "/QuestForGreen/Profil";
+                document.location.href = "/QuestForGreen/Profile";
             }
 
             function quest() {

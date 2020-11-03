@@ -3,13 +3,11 @@ function connect() {
     var xmlhttp = new XMLHttpRequest();
     var login = document.getElementById("login").value;
     var mdp = document.getElementById("mdp").value;
-    var labelLogin = document.createElement("label");
     xmlhttp.open("GET", "loginSubmit.php?login=" + login + "&mdp=" + mdp, true);
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            labelLogin.innerHTML = this.responseText;
-            document.getElementById("getResponseConnect").innerHTML = "";
-            document.querySelector(".getResponseConnect").appendChild(labelLogin);
+            document.getElementById("getResponseConnect").innerHTML = this.responseText;
+            document.location.href="/QuestForGreen/Home/";
         }
     }
     xmlhttp.send();
@@ -81,12 +79,4 @@ function showFormEditUsername() {
 function showFormEditEmail() {
     document.getElementById("showFormEditEmail").style.display = "block";
     document.getElementById("showButtonEditEmail").style.display = "none";
-}
-
-function showLogin() {
-    document.location.href = "../Login";
-}
-
-function showProfile() {
-    document.location.href = "../Profile";
 }

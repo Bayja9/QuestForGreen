@@ -1,8 +1,10 @@
-        <!--=====================================================
-        /             Traitement de la connexion                /
-        ======================================================-->
+        
         <?php
-            require "../includes/header.php" ; 
+        /*======================================================/
+        /             Traitement de la connexion                /
+        /======================================================*/
+            session_start();
+            require "../includes/BDDConnection.php";
 
             if(isset($_GET["login"]))
             {
@@ -45,6 +47,4 @@
                     $requete->closeCursor();
                 }        
             }
-
-            require "../includes/import-js.php" ;
         ?>

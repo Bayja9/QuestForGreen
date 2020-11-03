@@ -2,13 +2,16 @@
 <html>
     <head>
         <?php 
-            
-            require "../includes/header.php" ; 
+            session_start();
+            require "../includes/BDDConnection.php";
             unset($_SESSION['email']);
             unset($_SESSION['pseudo']);
             unset($_SESSION['id']);
         ?>
+        <link rel="stylesheet" href="/QuestForGreen/resources/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
     </head>
+    <link rel="icon" type="image/png" href="../resources/img/logoV2.png" />
     <body>
         <!--=====================================================
         /       Affichage du formulaire de connexion            /
