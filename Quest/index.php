@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <?php require "..\header.php" ?>
+    <?php require "../includes/header.php" ?>
     <LINK rel="stylesheet" href="../resources/css/quest.css"/>
     <title>QuestForGreen - Quest</title>
     <body>
@@ -66,7 +66,7 @@
             </div>
         </div>
         </div>
-        <?php require "..\import-js.php" ?>
+        <?php require "../includes/import-js.php" ?>
         <script>
             function back(){
                 document.location.href = "/QuestForGreen/Home";

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <?php require "..\header.php" ?>
+    <?php require "../includes/header.php" ?>
     <LINK rel="stylesheet" href="../resources/css/home.css"/>
     <title>QuestForGreen - Home</title>
     <body>
@@ -24,7 +24,7 @@
                     <label id="points">Points : ----- pts</label>
                     </div>
                     <div id="Slots">
-                        <div id="profil">
+                        <div id="profil" onclick="profile()">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg%22%3E">
                                 <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
                                 <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -45,14 +45,14 @@
                         </div>  
                     </div>
                 </div>
-                <div id="power">
+                <div id="power" onclick="retour()">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-power" fill="currentColor" xmlns="http://www.w3.org/2000/svg%22%3E">
                         <path fill-rule="evenodd" d="M5.578 4.437a5 5 0 1 0 4.922.044l.5-.866a6 6 0 1 1-5.908-.053l.486.875z"/>
                         <path fill-rule="evenodd" d="M7.5 8V1h1v7h-1z"/>
                     </svg>
                 </div>
                 
-                <div class="progress">
+                <div class="progress" >
                     <div id="blockXp">
                         <label id="xp">5</label>/<label id="axp">100</label>xp
                     </div>
@@ -61,10 +61,18 @@
             </div>
             
         </div>
-        <?php require "..\import-js.php" ?>
+        <?php require "../includes/import-js.php" ?>
         <script>
+            function profile() {
+                document.location.href = "/QuestForGreen/Profil";
+            }
+
             function quest() {
                 document.location.href = "/QuestForGreen/Quest";
+            }
+
+            function retour() {
+                document.location.href = "/QuestForGreen/login";
             }
         </script>
     </body>
