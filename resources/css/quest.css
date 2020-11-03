@@ -28,7 +28,7 @@ body {
     background-color: gray;
     border-radius: 25px;
     display: flex;
-    padding: 50px;
+    padding: 25px;
 
     perspective: 2300px;
 }
@@ -41,8 +41,8 @@ body {
     z-index: 1;
 }
 .page {
-    width: 620px;
-    height: 700px;
+    width: 640px;
+    height: 800px;
     background: #fff6d5;
     padding: 25px;
     border: 2px solid grey
@@ -56,12 +56,12 @@ body {
 }
 
 #blockpage1 h2, h4{
-    margin: 0 auto 50px auto; 
+    margin: 0 auto 25px auto; 
     width: fit-content;
 }
 
 #blockpage1 #page1{
-    height: 612px;
+    height: 737px;
 }
 
 h4{
@@ -70,6 +70,7 @@ h4{
     
     position: relative;
     padding: 0 10px;
+    margin-bottom: 10px;
 }
 
 #ligne{
@@ -101,7 +102,7 @@ h4{
 
 .blockpage {
     position: absolute;
-    right: 50px;
+    right: 25px;
 }
 
 .blockpage:first-child {
@@ -110,7 +111,7 @@ h4{
 }
 
 #blockpage2 , #blockpage3 {
-    width: 1242px;
+    width: 1290px;
     z-index: 2;
 }
 #blockpage3 {
@@ -122,4 +123,21 @@ h4{
 }
 #page3{
     transform: rotateY(180deg);
+}
+
+#questTitle{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#questInfo {
+    left: 50px;
+    position: relative;
+    width: 86%;
+}
+
+#questValue {
+    position: relative;
+    top: -57px;
+    left: 65px;
 }

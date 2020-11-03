@@ -40,26 +40,33 @@
                             <div id="pageblock">
                                 <div id="ligne"></div>
                                 <h4>Principales</h4>
+                                <!-- mettre ici la quetes principales -->
+                                <label id="questTitle">Recycler un stylo</label>
+                                <br>
+                                <label id="questInfo">Tu dois forcement avoir un stylo usé chez toi ! Si oui, ne le jette pas ! Je suis sûr qu'il peux avoir une autre utilité ! ;)</label>
+                                <label id="questValue">0/1</label>
+                                <div id="ligne"></div>
+                                <h4>Journalière</h4>
                             </div>
-                            <!-- mettre ici la quetes principales -->
-                            <label id="questTitle"></label>
-                            <span id="questInfo"></span>
-                            <label id="questValue"></label>
                         </div>
                     </div>
                 </div>
                 <div id="blockpage2" class="blockpage" >
                     <div id="page2" class="page" onmousedown="turnPageON(event)">
-                        Léon
+                    <div id="ligne"></div>
+                    <h4>Hebdommadaire</h4>
                     </div>
                 </div>
                 <div id="blockpage3" class="blockpage">
                     <div id="page3" class="page" onmousedown="turnPageON(event)">
-                        ROPGOP
+                    <div id="ligne"></div>
+                    <h4>Mensuel</h4>
                     </div>
                 </div>
                 <div id="blockpage4" class="blockpage">
                     <div id="page4" class="page">
+                    <div id="ligne"></div>
+                    <h4>Accomplies</h4>
                     </div>
                 </div>
                 
@@ -90,10 +97,16 @@
                             deg+=2;
                         }
                     }
+                    else if (deg > 0) {
+                        deg = 0;
+                    }
+
                     if (deg > -180) {
                         if (lastpos > pos ) {
                             deg-=2;
                         }
+                    }else if (deg < -180){
+                        deg = -180;
                     }
                     document.querySelector("#blockpage2").style.transform = "rotateY("+deg+"deg)";
                     document.querySelector("#blockpage3").style.transform = "rotateY("+deg+"deg)";
