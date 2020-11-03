@@ -2,7 +2,7 @@
 <html>
     <header>
         <?php 
-            require "header.php" ; 
+            require "includes/header.php" ; 
         ?>
     </header>
     <body>
@@ -18,7 +18,7 @@
                 <?php
             //}
 
-            require "import-js.php" ;
+            require "includes/import-js.php" ;
         ?>
     </body>
 </html>
