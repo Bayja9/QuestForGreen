@@ -36,7 +36,7 @@ if (isset($_POST['suppru']))
 {
 
     $id_utilisateur=$_POST['choix_utilisateur_suppr'];
-    $unutilisateur = new utilisateur((integer)$id_utilisateur,'','');
+    $unutilisateur = new utilisateur((integer)$id_utilisateur,'','','');
     $u = $unutilisateur -> suppr_utilisateur($unutilisateur, $bdd);
     header('Location: ./suppr_utilisateur.php');
 }
