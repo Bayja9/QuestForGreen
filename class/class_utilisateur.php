@@ -1,6 +1,6 @@
 <?php
 
-include 'BDDConnection.php';
+include '../includes/BDDconnection.php';
 
 	/* ---------------------- */
 	/* DEBUT class utilisateur */
@@ -139,7 +139,7 @@ class utilisateur
 			/* ---------------------- */
 
 
-			Public function ajout_utilisateur ($objet, $conn)
+			Public function ajout_utilisateur ($objet, $bdd)
 				{
 					$id_util = $objet->get_id_utilisateur();
 					$user_util = $objet->get_username_utilisateur();
@@ -150,10 +150,10 @@ class utilisateur
 
 
 					print $SQL = " INSERT INTO utilisateur values (NULL, '$user_util', '$pass_util', '$xp_util', '$pts_util','0')";
-					$Req = $conn -> query ($SQL) or die (' Erreur ajout utilisateur ');
+					$Req = $bdd -> query ($SQL) or die (' Erreur ajout utilisateur ');
 				}
 
-				Public function modif_utilisateur ($objet, $conn)
+				Public function modif_utilisateur ($objet, $bdd)
 				{
 					$id_util = $objet->get_id_utilisateur();
 					$user_util = $objet->get_username_utilisateur();
@@ -166,10 +166,10 @@ class utilisateur
 					print $SQL = "UPDATE utilisateur SET id_utilisateur = '$id_util', username_utilisateur  = '$user_util', password_utilisateur = '$pass_util',
           			etat_utilisateur  = '$etat_util'
 					WHERE id_utilisateur = '$id_util'";
-				 	$Req = $conn -> query ($SQL) or die (' Erreur modification utilisateur ');
+				 	$Req = $bdd -> query ($SQL) or die (' Erreur modification utilisateur ');
 				}
 
-				Public function affiche_utilisateur_total($objet, $conn)
+				Public function affiche_utilisateur_total($objet, $bdd)
 				{
 					$id_util = $objet->get_id_utilisateur();
 					$user_util = $objet->get_username_utilisateur();
@@ -180,18 +180,25 @@ class utilisateur
 					
 
 					print $SQL = " SELECT * From utilisateur WHERE id_utilisateur = '$id_util'";
-					$Req = $conn -> query ($SQL) or die (' Erreur affichage utilisateur ');
+					$Req = $bdd -> query ($SQL) or die (' Erreur affichage utilisateur ');
 					return $Res = $Req -> fetch ();
 				}
 
-				Public function suppr_utilisateur ($objet, $conn)
+				public function tslesutilisateurs($bdd)
+				{
+					$SQL="SELECT * FROM utilisateur ORDER BY etat_utilisateur,username_utilisateur";
+					$req = $bdd->query($SQL);
+					return $req;
+				}
+
+				Public function suppr_utilisateur ($objet, $bdd)
 				{
 					$id_util = $objet->get_id_utilisateur();
 
 
 					print $SQL = "UPDATE utilisateur SET etat_utilisateur = '1'
 					WHERE id_utilisateur = '$id_util'";
-				 	$Req = $conn -> query ($SQL) or die (' Erreur suppression utilisateur ');
+				 	$Req = $bdd -> query ($SQL) or die (' Erreur suppression utilisateur ');
 				}
 
 
