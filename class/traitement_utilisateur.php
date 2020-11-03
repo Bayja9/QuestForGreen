@@ -10,10 +10,10 @@ if (isset($_POST['enregistreru']))
 {
     $user_util=$_POST['username_utilisateur'];
     $pass_util=$_POST['password_utilisateur'];
-    $user_util=$_POST['mail_utilisateur'];
+    $mail_util=$_POST['mail_utilisateur'];
 
 
-    $unutilisateur = new utilisateur ('', $user_util, $pass_util, $mail_util);
+    $unutilisateur = new utilisateur('', $user_util, $pass_util, $mail_util);
     $unutilisateur-> ajout_utilisateur($unutilisateur, $bdd);
     header('Location: ./inscription_utilisateur.php');
 
