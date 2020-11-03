@@ -3,7 +3,7 @@
     <head>
         <?php 
             
-            require "includes/header.php" ; 
+            require "../includes/header.php" ; 
         ?>
     </head>
     <body>
@@ -22,11 +22,12 @@
                 </div>
                 <button onclick="connect()" class="btn btn-primary">Connexion</button>
                 <br>
-                <a href="register.php">Créer un compte ?</a>
+                <a href="../Register">Créer un compte ?</a>
+                <div align="center" class="getResponseConnect" id="getResponseConnect"></div>
         </div>
 
         <?php
-            require "includes/import-js.php" ;
+            require "../includes/import-js.php" ;
         ?>
     </body>
 </html>

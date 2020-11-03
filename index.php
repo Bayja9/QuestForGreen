@@ -13,7 +13,7 @@
             //{
                 ?>
                     <script>
-                        document.location.href="login.php";
+                        document.location.href="Login/";
                     </script>
                 <?php
             //}

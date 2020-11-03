@@ -2,7 +2,7 @@
         /             Traitement de la création de compte       /
         ======================================================-->
         <?php
-            require "includes/header.php" ; 
+            require "../includes/header.php" ; 
 
             if(isset($_GET["email"]))
             {
@@ -27,7 +27,7 @@
                                 // insertion
                                 if($requete->execute())
                                 {
-                                    echo'<div class="alert alert-success">Création de votre compte réussi ! Vous pouvez à présent <a href="login.php">vous connecter</a></div>';
+                                    echo'<div class="alert alert-success">Création de votre compte réussi ! Vous pouvez à présent <a href="../Login">vous connecter</a></div>';
                                     ?>
                                         <script>            
                                             function redirect()
@@ -69,5 +69,5 @@
                 }
             }
 
-            require "includes/import-js.php" ;
+            require "../includes/import-js.php" ;
         ?>
