@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+}
+
+#UImenu {
+    background: linear-gradient(90deg, rgba(79, 174, 153, 1) 0%, rgba(186, 231, 203, 1) 100%);
+    height: 153px;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+}
+
+#UImenuTop {
+    background: linear-gradient(90deg, rgba(79, 174, 153, 1) 0%, rgba(186, 231, 203, 1) 100%);
+    height: 153px;
+    width: 100%;
+    bottom: 0px;
+    display: flex;
+}
+
+#userImg {
+    width: 195px;
+    height: 195px;
+    background: #ffffff;
+    border: 5px solid rgba(79, 174, 153, 1);
+    border-radius: 100%;
+    position: relative;
+    top: -100px;
+    left: 30px;
+}
+
+#block1 {
+    min-width: 230px;
+    max-width: 230px;
+    height: 100%;
+    position: relative;
+}
+
+#block2 {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#block3 {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    position: relative;
+}
+
+#Slots {
+    background-color: white;
+    border-radius: 20px;
+    width: 300px;
+    height: 70px;
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.progress {
+    position: relative;
+    top: 35px;
+    right: 0;
+    height: 30px;
+    width: calc(100% - 50px);
+    border-radius: 15px;
+    margin: 0 25px;
+    z-index: 0;
+}
+
+.progress-bar {
+    background: green;
+    transition: 4s ease-in-out;
+}
+
+#blockXp {
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    z-index: 1;
+    transform: translateX(-50%);
+}
+
+#username {
+    font-weight: bold;
+    font-size: 26px;
+    position: absolute;
+    bottom: 10px;
+    left: 55%;
+    transform: translateX(-50%);
+}
+
+#blockPoints {
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    position: relative;
+    bottom: -30px;
+    margin-left: 30px;
+}
+
+#points {
+    padding: 5px;
+    margin-bottom: 0;
+}
+
+svg {
+    margin: 10px;
+    font-size: 50px;
+    transition: all 100ms ease-in-out;
+}
+
+svg:hover {
+    color: green;
+    transition: all 100ms ease-in-out;
+    transform: scale(1.1);
+}
+
+#power {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+}
+
+#flora {
+    position: absolute;
+    right: 50px;
+    bottom: 153px;
+}
