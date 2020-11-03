@@ -1,7 +1,7 @@
 <?php
 session_start();
 //require_once('login.inc.php');
-include "BBDConnection.php";
+include "BDDConnection.php";
 include "class_badge.php";
 include "letraitementlogin.php";
 
