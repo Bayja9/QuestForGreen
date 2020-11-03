@@ -2,7 +2,7 @@
         /             Traitement de la connexion                /
         ======================================================-->
         <?php
-            require "includes/header.php" ; 
+            require "../includes/header.php" ; 
 
             if(isset($_GET["login"]))
             {
@@ -46,5 +46,5 @@
                 }        
             }
 
-            require "includes/import-js.php" ;
+            require "../includes/import-js.php" ;
         ?>

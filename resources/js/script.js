@@ -8,7 +8,8 @@ function connect() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             labelLogin.innerHTML = this.responseText;
-            document.querySelector("body").appendChild(labelLogin);
+            document.getElementById("getResponseConnect").innerHTML = "";
+            document.querySelector(".getResponseConnect").appendChild(labelLogin);
         }
     }
     xmlhttp.send();
@@ -25,7 +26,8 @@ function register() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             labelLogin.innerHTML = this.responseText;
-            document.querySelector("body").appendChild(labelLogin);
+            document.getElementById('getResponseRegister').innerHTML = "";
+            document.querySelector(".getResponseRegister").appendChild(labelLogin);
         }
     }
     xmlhttp.send();

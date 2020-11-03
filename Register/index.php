@@ -3,7 +3,7 @@
     <header>
         <?php 
             
-            require "includes/header.php" ; 
+            require "../includes/header.php" ; 
         ?>
     </header>
     <body>
@@ -30,11 +30,12 @@
                 </div>
                 <button onclick="register()" class="btn btn-primary">Créer un compte</button>
                 <br>
-                <a href="login.php">Déjà un compte ? Se connecter</a>
+                <a href="../Login">Déjà un compte ? Se connecter</a>
+                <div align="center" class="getResponseRegister" id="getResponseRegister"></div>
         </div>
      
         <?php
-            require "includes/import-js.php" ;
+            require "../includes/import-js.php" ;
         ?>
     </body>
 </html>
