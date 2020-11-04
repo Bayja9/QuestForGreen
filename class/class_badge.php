@@ -1,6 +1,6 @@
 <?php
 
-include 'BDDConnection.php';
+include '../includes/BDDconnection.php';
 
 	/* ---------------------- */
 	/* DEBUT class badge */
@@ -15,21 +15,23 @@ class badge
 		Private $id_badge;
 		Private $nom_badge;
 		Private $description_badge;
-        Private $nom_image_badge;
+		Private $nom_image_badge;
+		Private $unutilisateur;
 
 
 		/* ---------------------- */
 		/* class badge Constructeur */
 		/* ---------------------- */
 
-			Public function __construct ($id_bad, $n_bad, $desc_bad, $n_img_bad)
+			Public function __construct ($id_bad, $n_bad, $desc_bad, $n_img_bad, $id_util, $user_util, $pass_util, $xp_util, $pts_util, $mail_util, $niv_util, $n_img, $etat_util)
 			{
 
 				$this->id_badge = $id_bad;
 				$this->nom_badge = $n_bad;
 				$this->description_badge = $desc_bad;
                 $this->nom_image_badge = $n_img_bad;
-
+				$utilisateur=new utilisateur($id_util, $user_util, $pass_util, $xp_util, $pts_util, $mail_util, $niv_util, $n_img, $etat_util, $bdd)
+				$this->$unutilisateur = $utilisateur;
 			}
 
 			/* ---------------------- */
@@ -69,6 +71,11 @@ class badge
             Public function get_nom_image_badge ()
             {
                 return $this->nom_image_badge;
+			}
+			
+			Public function get_utilisateur ()
+            {
+                return $this->utilisateur;
             }
 
 			/* ---------------------- */
@@ -95,6 +102,11 @@ class badge
 				 $this->nom_image_badge = $n_img_bad;
 			}
 
+			Public function set_utilisateur ($utilisateur)
+			{
+				 $this->id_utilisateur = $utilisateur;
+			}
+
 
 			/* ---------------------- */
 			/* class Box fonctions publiques */
@@ -107,9 +119,10 @@ class badge
 					$nom_badge = $objet->get_nom_badge();
 					$description_badge = $objet->get_description_badge();
 					$nom_image_badge = $objet->get_nom_image_badge();
+					$unutilisateur = $objet->get_utilisateur();
 
 
-					print $SQL = " INSERT INTO badge values (NULL, '$n_badge', '$desc_badge', '$nom_image_badge')";
+					print $SQL = " INSERT INTO badge values (NULL, '$n_badge', '$desc_badge', '$nom_image_badge', '$utilisateur')";
 					$Req = $conn -> query ($SQL) or die (' Erreur ajout badge ');
 				}
 
@@ -119,6 +132,7 @@ class badge
 					$nom_badge = $objet->get_nom_badge();
 					$description_badge = $objet->get_description_badge();
 					$nom_image_badge = $objet->get_nom_image_badge();
+					$unutilisateur = $objet->get_utilisateur();
 
 				
 					print $SQL = "UPDATE badge SET id_badge = '$id_bad', nom_badge  = '$n_badge', description_badge = '$desc_badge'
@@ -133,6 +147,7 @@ class badge
 					$nom_badge = $objet->get_nom_badge();
 					$description_badge = $objet->get_description_badge();
 					$nom_image_badge = $objet->get_nom_image_badge();
+					$unutilisateur = $objet->get_utilisateur();
 					
 
 					print $SQL = " SELECT * From badge WHERE id_badge = '$id_bad'";
@@ -143,6 +158,7 @@ class badge
 				Public function suppr_badge ($objet, $conn)
 				{
 					$id_badge = $objet->get_id_badge();
+					$unutilisateur = $objet->get_utilisateur();
 
 
 					print $SQL = "UPDATE badge SET etat_badge = '1'
