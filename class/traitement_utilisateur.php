@@ -1,11 +1,7 @@
 <?php
 session_start();
 //require_once('login.inc.php');
-<<<<<<< HEAD
 include "../includes/BDDConnection.php";
-=======
-include "BDDConnection.php";
->>>>>>> 54005551e29faaebb61d3b48f63f2e4398c5d9dd
 include "class_utilisateur.php";
 
 
@@ -27,22 +23,23 @@ if (isset($_POST['modifieru']))
     $id_util=$_SESSION['id_utilisateur'];
     $user_util=$_POST['username_utilisateur'];
     $mail_util=$_POST['mail_utilisateur'];
-    $niv_util=$_POST['mail_utilisateur'];
-    $xp_util=$_POST['mail_utilisateur'];
-    $points_util=$_POST['mail_utilisateur'];
-    $etat_util=$_POST['mail_utilisateur'];
+    $niv_util=$_POST['niv_utilisateur'];
+    $xp_util=$_POST['xp_utilisateur'];
+    $points_util=$_POST['points_utilisateur'];
+    $etat_util=$_POST['etat_utilisateur'];
+    $nom_img=$_POST['nom_img_utilisateur'];
 
-    $unutilisateur = new utilisateur ($id_util, $user_util, $pass_util, $mail_util);
+    $unutilisateur = new utilisateur ($id_util, $user_util, '', $xp_util, $points_util, $mail_util, $niv_util, $nom_img, $etat_util);
     $unutilisateur-> modif_utilisateur($unutilisateur, $bdd);
     //$_SESSION['id_utilisateur']='';
-    header('Location: ./modif_utilisateur.php');
+    header('Location: ../admin/utilisateurs_admin.php');
 
 }
 if (isset($_POST['suppru']))
 {
 
     $id_utilisateur=$_POST['idutil'];
-    $unutilisateur = new utilisateur((integer)$id_utilisateur,'','','','','','');
+    $unutilisateur = new utilisateur((integer)$id_utilisateur,'','','','','','','','');
     $u = $unutilisateur -> suppr_utilisateur($unutilisateur, $bdd);
     header('Location: ../admin/utilisateurs_admin.php');
 }

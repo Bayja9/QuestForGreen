@@ -2,6 +2,7 @@
 <html>
     <head>
         <?php 
+            include "../includes/BDDConnection.php";
             require "../includes/header.php" ;
             require "../class/class_utilisateur.php";
         ?>
@@ -12,8 +13,8 @@
         =====================================-->
 
         <div class="container">
-                <a href="admin_panel.php"><button name="retour" class="btn btn-primary">Retour</button></a>
-        
+                <div class="float-md-left"><a href="admin_panel.php"><button name="retour" class="btn btn-primary">Retour</button></a></div>
+                <div class="float-md-right"><a href="ajout_util.php"><button name="ajouter" class="btn btn-primary">Ajouter</button></a></div><br>
 
 
         <table class="table">
@@ -25,6 +26,7 @@
                 <th scope="col">XP</th>
                 <th scope="col">Points</th>
                 <th scope="col">Rang</th>
+                <th scope="col">Image</th>
                 <th scope="col">Modifier</th>
                 <th scope="col">Supprimer</th>
                 </tr>
@@ -32,7 +34,7 @@
             <tbody>
             <?php
                 //roles = admin, member, user
-                $o=new utilisateur("","","","","","","");
+                $o=new utilisateur("","","","","","","","","");
                 $req=$o->tslesutilisateurs($bdd);
                 foreach($req as $unutilisateur){
                 $id_util=$unutilisateur['id_utilisateur'];
@@ -40,7 +42,7 @@
                 <tr>
                 <th scope="row"><?php echo $unutilisateur['username_utilisateur']; ?></th>
                     <td><?php echo $unutilisateur['mail_utilisateur']; ?></td>
-                    <td><?php echo $unutilisateur['niv']; ?></td>
+                    <td><?php echo $unutilisateur['niv_util']; ?></td>
                     <td><?php echo $unutilisateur['xp_utilisateur']; ?></td>
                     <td><?php echo $unutilisateur['points_utilisateur']; ?></td>
                     <td><?php if ($unutilisateur['etat_utilisateur']==2) {
@@ -49,6 +51,7 @@
                                                         else {
                                                           echo "membre";
                                                         } ?></td>
+                    <td><?php echo $unutilisateur['nom_image']; ?></td>
                     <form action="modif_util.php" method="post">
                         <input name="idutil" type="hidden" value="<?php echo $unutilisateur['id_utilisateur']?>">
                         <td><input methode="POST" type="submit" value="Modifier" name="modifieru"></td>                                    
