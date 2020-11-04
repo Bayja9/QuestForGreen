@@ -3,7 +3,8 @@ function connect() {
     var xmlhttp = new XMLHttpRequest();
     var login = document.getElementById("login").value;
     var mdp = document.getElementById("mdp").value;
-    xmlhttp.open("GET", "loginSubmit.php?login=" + login + "&mdp=" + mdp, true);
+    var idsession = document.getElementById("idSession").value;
+    xmlhttp.open("GET", "loginSubmit.php?login=" + login + "&idsession=" + idsession + "&mdp=" + mdp, true);
     xmlhttp.withCredentials = true;
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {

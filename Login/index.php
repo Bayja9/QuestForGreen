@@ -4,6 +4,8 @@
         <?php 
             session_start();
             require "../includes/BDDConnection.php";
+            $_SESSION['email'] = "";
+            $idSession = session_id();
             unset($_SESSION['email']);
             unset($_SESSION['pseudo']);
             unset($_SESSION['id']);
@@ -22,6 +24,7 @@
                     <label for="login">Identifiant</label>
                     <input name="login" type="text" class="form-control" id="login" aria-describedby="loginHelp" placeholder="Adresse email ou pseudonyme">
                 </div>
+                <?php echo '<input type="hidden" id="idSession" value="'.$idSession.'">';?>
                 <div class="form-group">
                     <label for="mdp">Mot de passe</label>
                     <input name="mdp" type="password" class="form-control" id="mdp" placeholder="Votre mot de passe">
