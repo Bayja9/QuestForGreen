@@ -106,3 +106,7 @@ function hideFormEditEmail() {
     document.getElementById("showFormEditEmail").style.display = "none";
     document.getElementById("showButtonEditEmail").style.display = "flex";
 }
+var loadFile = function() {
+    var image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+};
