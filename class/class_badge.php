@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+include "../includes/BDDconnection.php";
+=======
 include '../includes/BDDConnection.php';
+>>>>>>> dfd43530311e6653bc6cfc12c79340db855fde12
 
 	/* ---------------------- */
 	/* DEBUT class badge */
@@ -135,7 +139,11 @@ class badge
 					$utilisateur = $objet->get_utilisateur();
 
 
+<<<<<<< HEAD
+					print $SQL = " INSERT INTO badge values (NULL, '$n_badge', '$desc_badge', '$nom_image_badge')";
+=======
 					print $SQL = " INSERT INTO badge values (NULL, '$n_badge', '$desc_badge', '$nom_image_badge', '0', '$utilisateur')";
+>>>>>>> dfd43530311e6653bc6cfc12c79340db855fde12
 					$Req = $bdd -> query ($SQL) or die (' Erreur ajout badge ');
 				}
 
@@ -170,6 +178,16 @@ class badge
 					return $Res = $Req -> fetch ();
 				}
 
+<<<<<<< HEAD
+				public function tslesbadges($bdd)
+				{
+					$SQL="SELECT * FROM badge WHERE etat_badge = '0'";
+					$req = $bdd->query($SQL);
+					return $req;
+				}
+
+=======
+>>>>>>> dfd43530311e6653bc6cfc12c79340db855fde12
 				Public function suppr_badge ($objet, $bdd)
 				{
 					$id_badge = $objet->get_id_badge();
@@ -177,7 +195,11 @@ class badge
 
 
 					print $SQL = "UPDATE badge SET etat_badge = '1'
+<<<<<<< HEAD
+					WHERE id_badge = '$id_badge'";
+=======
 					WHERE id_badge = '$id_bad'";
+>>>>>>> dfd43530311e6653bc6cfc12c79340db855fde12
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur suppression badge ');
 				}
 

@@ -14,7 +14,7 @@
 
         <div class="container">
                 <div class="float-md-left"><a href="admin_panel.php"><button name="retour" class="btn btn-primary">Retour</button></a></div>
-                <div class="float-md-right"><a href="ajout_util.php"><button name="ajouter" class="btn btn-primary">Ajouter</button></a></div><br>
+                
 
 
         <table class="table">
