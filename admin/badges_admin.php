@@ -14,7 +14,7 @@
 
         <div class="container">
                 <div class="float-md-left"><a href="admin_panel.php"><button name="retour" class="btn btn-primary">Retour</button></a></div>
-                
+                <div class="float-md-right"><a href="ajout_badge.php"><button name="retour" class="btn btn-primary">Ajouter</button></a></div>
 
 
         <table class="table">
@@ -30,7 +30,7 @@
             <tbody>
             <?php
                 //roles = admin, member, user
-                $o=new badge("","","","","");
+                $o=new badge("","","","","","","","","","","","","","","");
                 $req=$o->tslesbadges($bdd);
                 foreach($req as $unbadge){
                 $id_badge=$unbadge['id_badge'];
@@ -40,7 +40,7 @@
                     <td><?php echo $unbadge['description_badge']; ?></td>
                     <td><?php echo $unbadge['nom_image_badge']; ?></td>
                     
-                    <form action="modif_util.php" method="post">
+                    <form action="modif_badge.php" method="post">
                         <input name="idbadge" type="hidden" value="<?php echo $id_badge?>">
                         <td><input methode="POST" type="submit" value="Modifier" name="modifierb"></td>                                    
                     </form>
