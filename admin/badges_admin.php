@@ -24,7 +24,7 @@
                 <th scope="col">Desc Badge</th>
                 <th scope="col">Nom image</th>
                 <th scope="col">Modifier</th>
-                <th scope="col">Supprimer</th>
+                <th scope="col">Activer/Désactiver</th>
                 </tr>
             </thead>
             <tbody>

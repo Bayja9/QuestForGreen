@@ -172,7 +172,7 @@ class badge
 
 				public function tslesbadges($bdd)
 				{
-					$SQL="SELECT * FROM badge WHERE etat_badge = '0'";
+					$SQL="SELECT * FROM badge ORDER BY etat_badge";
 					$req = $bdd->query($SQL);
 					return $req;
 				}
