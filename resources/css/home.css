@@ -1,5 +1,27 @@
+@font-face {
+    font-family: "Aclonica";
+    src: url("../fonts/Aclonica-Regular.woff2") format("woff2"),
+    url("../fonts/Aclonica-Regular.woff") format("woff");
+}
+.font-Aclonica{
+    font-family: 'Aclonica';
+}
+
 body{
     margin: 0;
+    height: 100%;
+}
+header{
+    background-image: url('../img/headband.png');
+    background-size: cover;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-content{
+    background: linear-gradient(90deg, rgba(79, 174, 153, 1) 0%, rgba(186, 231, 203, 1) 100%);
 }
 
 #UImenu {
@@ -13,10 +35,9 @@ body{
 }
 
 #UImenuTop {
-    background: linear-gradient(90deg, rgba(79, 174, 153, 1) 0%, rgba(186, 231, 203, 1) 100%);
-    height: 153px;
+
+    height: 80px;
     width: 100%;
-    bottom: 0px;
     display: flex;
 }
     
@@ -45,10 +66,11 @@ body{
 }
 
 #block3 {
-    width: 100%;
-    height: 70px;
+    width: fit-content;
     display: flex;
-    position: relative;
+    justify-content: center;
+    margin: auto;
+    margin-top: 30px;
 }
 
 #Slots {
@@ -64,13 +86,16 @@ body{
     justify-content: center;
     display: flex;
 }
-
+.lvl{
+    position: relative;
+    top: 35px;
+}
 .progress {
     position: relative;
     top: 35px;
     right: 0;
     height: 30px;
-    width: calc(100% - 50px);
+    width: calc(100% - 200px);
     border-radius: 15px;
     margin: 0 25px;
     z-index: 0;
@@ -85,10 +110,9 @@ body{
     font-size: 16px;
     font-weight: bold;
     position: absolute;
-    bottom: 10px;
-    left: 50%;
+    bottom: 7px;
+    left: 41%;
     z-index: 1;
-    transform: translateX(-50%);
 }
 
 #username {
@@ -101,15 +125,10 @@ body{
 }
 
 #blockPoints{
-    background-color: white;
     width: fit-content;
     height: fit-content;
-    border-radius: 5px;
     font-weight: bold;
     font-size: 20px;
-    position: relative;
-    bottom: -30px;
-    margin-left: 30px;
 }
 
 #points{
@@ -133,7 +152,7 @@ body{
 }
 #power{
     position: absolute;
-    right: 25px;
+    left: 25px;
     top: -10px;
 }
 
@@ -181,3 +200,20 @@ body{
     float: right;
     margin-right: 40px;
 }
+.badge-img{
+    border: solid #000 1px;
+    border-radius: 100px;
+}
+
+.white-background{
+    font-size: 1.25em;
+    background: #FFF;
+    border-radius: 20px;
+    padding: 20px 100px;
+}
+
+.r-vertical{
+    vertical-align: middle!important;
+}
+
+

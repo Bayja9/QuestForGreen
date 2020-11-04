@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Aclonica";
-    src: url("../font/Aclonica-Regular.woff2") format("woff2"), url("../font/Aclonica-Regular.woff") format("woff");
+    src: url("../fonts/Aclonica-Regular.woff2") format("woff2"), url("../fonts/Aclonica-Regular.woff") format("woff");
 }
 
 body {
