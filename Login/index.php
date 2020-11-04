@@ -4,6 +4,9 @@
         <?php 
             
             require "../includes/header.php" ; 
+            unset($_SESSION['email']);
+            unset($_SESSION['pseudo']);
+            unset($_SESSION['id']);
         ?>
     </head>
     <body>

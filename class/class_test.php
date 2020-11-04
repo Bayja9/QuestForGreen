@@ -14,18 +14,20 @@ class boxss
 
 		private $idboxss;
 		private $nomboxss;
-
+		private $untheme;
 
 		/* ---------------------- */
 		/* class Activites Constructeur */
 		/* ---------------------- */
 
-		public function __construct($idbox, $nombox)
+		public function __construct($idbox, $nombox, $idt, $lib)
 		{
 				$this->idboxss = $idbox;
 				$this->nomboxss = $nombox;
+				$theme=new theme($idt, $libt, $bdd);
+				$this->$untheme = $theme;
 
-			}
+		}
 
 			/* ---------------------- */
 			/* class Activites GET */
@@ -71,8 +73,8 @@ class boxss
 
 				public function modif_boxss ($objet, $conn)
 				{
-          $idbox = $objet->get_id_box();
-          $nombox = $objet->get_nom_box();
+					$idbox = $objet->get_id_box();
+					$nombox = $objet->get_nom_box();
 
 					print $SQL = "UPDATE boxss SET nomboxss  = '$nombox'
 					WHERE idboxss = '$this->idboxss'";

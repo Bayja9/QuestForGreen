@@ -1,7 +1,11 @@
 <?php
 session_start();
 //require_once('login.inc.php');
+<<<<<<< HEAD
 include "../includes/BDDConnection.php";
+=======
+include "BDDConnection.php";
+>>>>>>> 54005551e29faaebb61d3b48f63f2e4398c5d9dd
 include "class_utilisateur.php";
 
 
