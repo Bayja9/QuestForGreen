@@ -57,7 +57,12 @@
         }
         if($Trouve == false)
         {
-            echo "<h4>Il n'y a plus de quêtes à valider pour le moment...</h4>";
+            echo '<div style="margin-top:200px;" class="row">
+                        <div style="margin:auto;" align="center" class="col-12">
+                            <h4>Il n\'y a plus de quêtes à valider pour le moment...</h4>
+                        </div>
+                                
+                </div>';
         }
     }
 
