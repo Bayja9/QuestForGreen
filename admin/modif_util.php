@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Niveaux</label>
-            <input name="niv_utilisateur" type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $unutilisateur['niv_util']?>">
+            <input name="niv_utilisateur" type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $unutilisateur['niv']?>">
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">xp</label>

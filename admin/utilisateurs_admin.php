@@ -42,7 +42,7 @@
                 <tr>
                 <th scope="row"><?php echo $unutilisateur['username_utilisateur']; ?></th>
                     <td><?php echo $unutilisateur['mail_utilisateur']; ?></td>
-                    <td><?php echo $unutilisateur['niv_util']; ?></td>
+                    <td><?php echo $unutilisateur['niv']; ?></td>
                     <td><?php echo $unutilisateur['xp_utilisateur']; ?></td>
                     <td><?php echo $unutilisateur['points_utilisateur']; ?></td>
                     <td><?php if ($unutilisateur['etat_utilisateur']==2) {
