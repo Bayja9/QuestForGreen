@@ -20,7 +20,7 @@
                             if($requete->rowCount() == 0)
                             {
                                 //Inscription des valeurs dans la base de données
-                                $requete = $bdd->prepare("INSERT INTO utilisateur(mail_utilisateur,username_utilisateur,password_utilisateur,xp_utilisateur,points_utilisateur,etat_utilisateur) Values(:email,:pseudo,MD5(:mdp),0,0,0)");
+                                $requete = $bdd->prepare("INSERT INTO utilisateur(mail_utilisateur,username_utilisateur,password_utilisateur,xp_utilisateur,points_utilisateur,etat_utilisateur,nom_image) Values(:email,:pseudo,MD5(:mdp),0,0,0,'')");
                                 $requete->bindParam(':email', $_GET['email']);
                                 $requete->bindParam(':pseudo', $_GET['pseudo']);
                                 $requete->bindParam(':mdp', $_GET['mdp']);
