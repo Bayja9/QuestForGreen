@@ -12,9 +12,9 @@ class quetes
 		/* class quetes Variables */
 		/* ---------------------- */
 
-		Private $id_quetes;
-		Private $nom_quetes;
-		Private $description_quetes;
+		Private $id_quetes_utilisateur;
+		Private $amount_done_utilisateur;
+		Private $validation_amount;
         Private $date_fin_quetes;
         Private $difficulte_quetes;
 		Private $periode_quetes;
