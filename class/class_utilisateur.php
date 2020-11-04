@@ -158,6 +158,7 @@ class utilisateur
 					$id_util = $objet->get_id_utilisateur();
 					$user_util = $objet->get_username_utilisateur();
 					$pass_util = $objet->get_password_utilisateur();
+					$mail_util = $objet->get_mail_utilisateur();
 					$xp_util = $objet->get_xp_utilisateur();
 					$pts_util = $objet->get_points_utilisateur();
 					$etat_util= $objet->get_etat_utilisateur();
@@ -174,19 +175,20 @@ class utilisateur
 					$id_util = $objet->get_id_utilisateur();
 					$user_util = $objet->get_username_utilisateur();
 					$pass_util = $objet->get_password_utilisateur();
+					$mail_util = $objet->get_mail_utilisateur();
 					$xp_util = $objet->get_xp_utilisateur();
 					$pts_util = $objet->get_points_utilisateur();
 					$etat_util= $objet->get_etat_utilisateur();
 					
 
-					print $SQL = " SELECT * From utilisateur WHERE id_utilisateur = '$id_util'";
+					$SQL = " SELECT * From utilisateur WHERE id_utilisateur = '$id_util'";
 					$Req = $bdd -> query ($SQL) or die (' Erreur affichage utilisateur ');
 					return $Res = $Req -> fetch ();
 				}
 
 				public function tslesutilisateurs($bdd)
 				{
-					$SQL="SELECT * FROM utilisateur ORDER BY etat_utilisateur,username_utilisateur";
+					$SQL="SELECT * FROM utilisateur WHERE etat_utilisateur='0' OR etat_utilisateur='2' ORDER BY etat_utilisateur,username_utilisateur";
 					$req = $bdd->query($SQL);
 					return $req;
 				}
@@ -196,7 +198,7 @@ class utilisateur
 					$id_util = $objet->get_id_utilisateur();
 
 
-					print $SQL = "UPDATE utilisateur SET etat_utilisateur = '1'
+					$SQL = "UPDATE utilisateur SET etat_utilisateur = '1'
 					WHERE id_utilisateur = '$id_util'";
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur suppression utilisateur ');
 				}

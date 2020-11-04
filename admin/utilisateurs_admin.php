@@ -21,6 +21,7 @@
                 <tr>
                 <th scope="col">Pseudo</th>
                 <th scope="col">e-mail</th>
+                <th scope="col">Niveaux</th>
                 <th scope="col">XP</th>
                 <th scope="col">Points</th>
                 <th scope="col">Rang</th>
@@ -39,23 +40,29 @@
                 <tr>
                 <th scope="row"><?php echo $unutilisateur['username_utilisateur']; ?></th>
                     <td><?php echo $unutilisateur['mail_utilisateur']; ?></td>
+                    <td><?php echo $unutilisateur['niv']; ?></td>
                     <td><?php echo $unutilisateur['xp_utilisateur']; ?></td>
                     <td><?php echo $unutilisateur['points_utilisateur']; ?></td>
                     <td><?php if ($unutilisateur['etat_utilisateur']==2) {
                                                           echo "admin";
                                                         }
                                                         else {
-                                                          echo "member";
+                                                          echo "membre";
                                                         } ?></td>
-                    <td><?php echo "<a href='modif_util_admin.php?idutil=$id_util'><button class='item' data-toggle='tooltip' data-placement='top' title='Details/Modifier'>"?></td>
-                    <form action="../class/traitement_utilisateur.php">
-                        <td><?php echo "<a href='../class/traitement_utilisateur.php?idutil=$id_util&type=supprimerutil'><button class='item' data-toggle='tooltip' data-placement='top' title='Details/Modifier'>"?></td>                                    
+                    <form action="modif_util.php" method="post">
+                        <input name="idutil" type="hidden" value="<?php echo $unutilisateur['id_utilisateur']?>">
+                        <td><input methode="POST" type="submit" value="Modifier" name="modifieru"></td>                                    
+                    </form>
+                    <form action="../class/traitement_utilisateur.php" method="post">
+                        <input name="idutil" type="hidden" value="<?php echo $unutilisateur['id_utilisateur']?>">
+                        <td><input methode="POST" type="submit" value="Supprimer" name="suppru"></td>                                    
                     </form>
                 </tr>
-            </tbody>
-            <?php
+                <?php
                 }
             ?>
+            </tbody>
+            
         </table>
         </div>
 
