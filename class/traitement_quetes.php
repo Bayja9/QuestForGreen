@@ -30,7 +30,7 @@ if (isset($_POST['modifierq']))
     $etat_que=$_POST['etat_quetes'];
 
 
-    $unquetes = new quetes ($id_que, $nom_que, $desc_que, $dif_que, $period_que, $amont_que, $etat_util);
+    $unquetes = new quetes ($id_que, $nom_que, $desc_que, $dif_que, $period_que, $amont_que, $etat_util);
     $unquetes-> modif_quetes($unquetes, $bdd);
     //$_SESSION['id_quetes']='';
     header('Location: ../admin/quetes_admin.php');

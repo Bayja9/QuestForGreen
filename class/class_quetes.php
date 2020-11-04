@@ -1,5 +1,5 @@
 <?php
-include '../class/class_utilisateur.php';
+include '../class/class_typequete.php';
 include '../includes/BDDconnection.php';
 
 	/* ---------------------- */
@@ -28,7 +28,7 @@ class quetes
 		/* class quetes Constructeur */
 		/* ---------------------- */
 
-			Public function __construct ($id_que, $n_que, $desc_que, $date_fin_que, $dif_que, $period_que, $niv, $amount_que, $etat_que)
+			Public function __construct ($id_que, $n_que, $desc_que, $date_fin_que, $dif_que, $period_que, $amount_que, $etat_que, $id_type_que)
 			{
 
 				$this->id_quetes = $id_que;
@@ -37,11 +37,10 @@ class quetes
                 $this->date_fin_quetes = $date_fin_que;
                 $this->difficulte_quetes = $dif_que;
                 $this->periode_quetes = $period_que;
-                $this->niv = $niv;
                 $this->amount_quetes = $amount_que;
                 $this->etat_quetes = $etat_que;
-                $typequete=new typequetes($id_typ_que, $titre_typ_que, $bdd);
-                $this->$untypequete = $typequete;
+                //$typequete=new typequetes($id_typ_que, $titre_typ_que, $bdd);
+                //$this->$untypequete = $typequete;
 
 			}
 
@@ -57,7 +56,6 @@ class quetes
                 $data = $data.$this->date_fin_quetes;
                 $data = $data.$this->difficulte_quetes;
 				$data = $data.$this->periode_quetes;
-				$data = $data.$this->niv;
                 $data = $data.$this->amount_quetes;
                 $data = $data.$this->etat_que;
 				$data = $data.$this->typequetes;
@@ -98,11 +96,6 @@ class quetes
             {
                 return $this->niv;
 			}
-			
-			Public function get_niv ()
-            {
-                return $this->niv;
-            }
 
 			Public function get_amount_quetes ()
             {
@@ -234,7 +227,7 @@ class quetes
 					return $Res = $Req -> fetch ();
 				}
 
-				public function tslesquetess($bdd)
+				public function tslesquetes($bdd)
 				{
 					$SQL="SELECT * FROM quetes ORDER BY etat_quetes, nom_quetes";
 					$req = $bdd->query($SQL);
