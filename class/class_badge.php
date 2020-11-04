@@ -135,7 +135,7 @@ class badge
 					//$utilisateur = $objet->get_utilisateur();
 
 
-					print $SQL = " INSERT INTO badge values (NULL, '$nom_badge', '$desc_badge', '$nom_image_badge', '0', '$utilisateur')";
+					print $SQL = "INSERT INTO badge (nom_badge, description_badge, nom_image_badge, id_utilisateur) values ('$nom_badge','$description_badge','$nom_image_badge','0')";
 					$Req = $bdd -> query ($SQL) or die (' Erreur ajout badge ');
 				}
 
@@ -146,7 +146,7 @@ class badge
 					$description_badge = $objet->get_description_badge();
 					$nom_image_badge = $objet->get_nom_image_badge();
 					$etat_badge = $objet->get_etat_badge();
-					$utilisateur = $objet->get_utilisateur();
+					//$utilisateur = $objet->get_utilisateur();
 				
 
 					$SQL = "UPDATE badge SET id_badge = '$id_badge', nom_badge  = '$nom_badge', description_badge = '$description_badge',
@@ -180,7 +180,7 @@ class badge
 				Public function suppr_badge ($objet, $bdd)
 				{
 					$id_badge = $objet->get_id_badge();
-					$utilisateur = $objet->get_utilisateur();
+					//$utilisateur = $objet->get_utilisateur();
 
 
 					print $SQL = "UPDATE badge SET etat_badge = '1'
