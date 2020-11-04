@@ -175,7 +175,7 @@ class utilisateur
 					$pts_util = $objet->get_points_utilisateur();
 					$mail_util = $objet->get_point_utilisateur();
 					$niv = $objet->get_niv();
-					$n_img = $onjet->get_nom_image();
+					$n_img = $objet->get_nom_image();
 					$etat_util= $objet->get_etat_utilisateur();
 
 

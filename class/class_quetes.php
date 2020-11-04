@@ -1,5 +1,5 @@
 <?php
-
+include '../class/class_utilisateur.php';
 include '../includes/BDDconnection.php';
 
 	/* ---------------------- */
@@ -18,7 +18,8 @@ class quetes
         Private $date_fin_quetes;
         Private $difficulte_quetes;
 		Private $periode_quetes;
-		Private $amount_quetes;
+        Private $amount_quetes;
+        Private $etat_quetes;
         Private $untypequete;
 
 
@@ -37,9 +38,10 @@ class quetes
                 $this->difficulte_quetes = $dif_que;
                 $this->periode_quetes = $period_que;
                 $this->niv = $niv;
-				$this->amount_quetes = $amount_que;
+                $this->amount_quetes = $amount_que;
+                $this->etat_quetes = $etat_que;
                 $typequete=new typequetes($id_typ_que, $titre_typ_que, $bdd);
-
+                $this->$untypequete = $typequete;
 
 			}
 
@@ -56,8 +58,9 @@ class quetes
                 $data = $data.$this->difficulte_quetes;
 				$data = $data.$this->periode_quetes;
 				$data = $data.$this->niv;
-				$data = $data.$this->amount_quetes;
-				$data = $data.$this->type_quetes;
+                $data = $data.$this->amount_quetes;
+                $data = $data.$this->etat_que;
+				$data = $data.$this->typequetes;
 
 				return $data;
 			}
@@ -106,6 +109,16 @@ class quetes
                 return $this->amount_quetes;
             }
 
+            Public function get_etat_quetes ()
+            {
+                return $this->etat_quetes;
+            }
+
+            Public function get_type_quetes ()
+            {
+                return $this->id_type_quetes;
+            }
+
 			/* ---------------------- */
 			/* class quetes SET */
 			/* ---------------------- */
@@ -148,11 +161,16 @@ class quetes
 			Public function set_nom_image ($n_img)
 			{
 				$this->nom_image = $n_img;
+            }
+            
+            Public function set_etat_quetes ($etat_que)
+			{
+				$this->etat_quetes = $etat_que;
 			}
 
-			Public function set_etat_quetes ($etat_quetes)
+			Public function set_types_quetes ($typequete)
 			{
-				 $this->etat_quetes = $etat_quetes;
+				 $this->id_type_quetes = $typequete;
 			}
 
 			/* ---------------------- */
@@ -163,35 +181,37 @@ class quetes
 			Public function ajout_quetes ($objet, $bdd)
 				{
 					$id_que = $objet->get_id_quetes();
-					$user_que = $objet->get_username_quetes();
-					$pass_que = $objet->get_password_quetes();
-					$xp_que = $objet->get_xp_quetes();
-					$pts_que = $objet->get_points_quetes();
-					$mail_que = $objet->get_point_quetes();
+					$n_que = $objet->get_nom_quetes();
+					$desc_que = $objet->get_description_quetes();
+					$date_fin_que = $objet->get_date_fin_quetes();
+					$dif_que = $objet->get_difficulte_quetes();
+					$period_que = $objet->get_periode_quetes();
 					$niv = $objet->get_niv();
-					$n_img = $onjet->get_nom_image();
-					$etat_que= $objet->get_etat_quetes();
+                    $amount_que = $objet->get_amount_quetes();
+                    $etat_que = $objet->get_etat_quetes();
+					$typequete= $objet->get_type_quetes();
 
 
-					print $SQL = " INSERT INTO quetes values (NULL, '$user_que', '$pass_que', '$xp_que', '$pts_que', '$mail_que', '$niv', '$n_img',0')";
+					print $SQL = " INSERT INTO quetes values (NULL, '$n_que', '$desc_que', '$date_fin_que', '$dif_que', '$period_que', '$niv', '$amount_que', '0', '$typequetes')";
 					$Req = $bdd -> query ($SQL) or die (' Erreur ajout quetes ');
 				}
 
 				Public function modif_quetes ($objet, $bdd)
 				{
 					$id_que = $objet->get_id_quetes();
-					$user_que = $objet->get_username_quetes();
-					$pass_que = $objet->get_password_quetes();
-					$xp_que = $objet->get_xp_quetes();
-					$pts_que = $objet->get_points_quetes();
-					$mail_que = $objet->get_point_quetes();
+					$n_que = $objet->get_nom_quetes();
+					$desc_que = $objet->get_description_quetes();
+					$date_fin_que = $objet->get_date_fin_quetes();
+					$dif_que = $objet->get_difficulte_quetes();
+					$period_que = $objet->get_periode_quetes();
 					$niv = $objet->get_niv();
-					$n_img = $onjet->get_nom_image();
-					$etat_que= $objet->get_etat_quetes();
-
+                    $amount_que = $objet->get_amount_quetes();
+                    $etat_que = $objet->get_etat_quetes();
+					$typequete= $objet->get_type_quetes();
 				
-					print $SQL = "UPDATE quetes SET id_quetes = '$id_que', username_quetes  = '$user_que', password_quetes = '$pass_que',
-          			xp_quetes = '$xp_que', points_quetes = '$pts_que', mail_quetes = '$mail_que', niv = '$niv', nom_image = '$n_img', etat_quetes  = '$etat_que'
+					print $SQL = "UPDATE quetes SET id_quetes = '$id_que', nom_quetes  = '$n_que', description_quetes = '$desc_que',
+          			date_fin_quetes = '$date_fin_que', difficulte_quetes = '$dif_que', periode_quetes = '$period_que', niv = '$niv',
+                    amount_quetes = '$amount_que',  typequete = '$typequete'
 					WHERE id_quetes = '$id_que'";
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur modification quetes ');
 				}
@@ -199,14 +219,14 @@ class quetes
 				Public function affiche_quetes_total($objet, $bdd)
 				{
 					$id_que = $objet->get_id_quetes();
-					$user_que = $objet->get_username_quetes();
-					$pass_que = $objet->get_password_quetes();
-					$xp_que = $objet->get_xp_quetes();
-					$pts_que = $objet->get_points_quetes();
-					$mail_que = $objet->get_point_quetes();
+					$n_que = $objet->get_nom_quetes();
+					$desc_que = $objet->get_description_quetes();
+					$date_fin_que = $objet->get_date_fin_quetes();
+					$dif_que = $objet->get_difficulte_quetes();
+					$period_que = $objet->get_periode_quetes();
 					$niv = $objet->get_niv();
-					$n_img = $onjet->get_nom_image();
-					$etat_que= $objet->get_etat_quetes();
+					$amount_que = $objet->get_amount_quetes();
+					$typequete= $objet->get_type_quetes();
 					
 
 					print $SQL = " SELECT * From quetes WHERE id_quetes = '$id_que'";
@@ -216,7 +236,7 @@ class quetes
 
 				public function tslesquetess($bdd)
 				{
-					$SQL="SELECT * FROM quetes ORDER BY etat_quetes,username_quetes";
+					$SQL="SELECT * FROM quetes ORDER BY etat_quetes, nom_quetes";
 					$req = $bdd->query($SQL);
 					return $req;
 				}
