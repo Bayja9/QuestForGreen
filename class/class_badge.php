@@ -1,6 +1,6 @@
 <?php
 
-include 'BDDConnection.php';
+include "../includes/BDDconnection.php";
 
 	/* ---------------------- */
 	/* DEBUT class badge */
@@ -101,7 +101,7 @@ class badge
 			/* ---------------------- */
 
 
-			Public function ajout_badge ($objet, $conn)
+			Public function ajout_badge ($objet, $bdd)
 				{
 					$id_badge = $objet->get_id_badge();
 					$nom_badge = $objet->get_nom_badge();
@@ -110,10 +110,10 @@ class badge
 
 
 					print $SQL = " INSERT INTO badge values (NULL, '$n_badge', '$desc_badge', '$nom_image_badge')";
-					$Req = $conn -> query ($SQL) or die (' Erreur ajout badge ');
+					$Req = $bdd -> query ($SQL) or die (' Erreur ajout badge ');
 				}
 
-				Public function modif_badge ($objet, $conn)
+				Public function modif_badge ($objet, $bdd)
 				{
 					$id_badge = $objet->get_id_badge();
 					$nom_badge = $objet->get_nom_badge();
@@ -124,10 +124,10 @@ class badge
 					print $SQL = "UPDATE badge SET id_badge = '$id_bad', nom_badge  = '$n_badge', description_badge = '$desc_badge'
           			nom_image_badge  = '$n_img_bad'
 					WHERE id_badge = '$id_util'";
-				 	$Req = $conn -> query ($SQL) or die (' Erreur modification badge ');
+				 	$Req = $bdd -> query ($SQL) or die (' Erreur modification badge ');
 				}
 
-				Public function affiche_badge_total($objet, $conn)
+				Public function affiche_badge_total($objet, $bdd)
 				{
 					$id_badge = $objet->get_id_badge();
 					$nom_badge = $objet->get_nom_badge();
@@ -136,18 +136,25 @@ class badge
 					
 
 					print $SQL = " SELECT * From badge WHERE id_badge = '$id_bad'";
-					$Req = $conn -> query ($SQL) or die (' Erreur affichage badge ');
+					$Req = $bdd -> query ($SQL) or die (' Erreur affichage badge ');
 					return $Res = $Req -> fetch ();
 				}
 
-				Public function suppr_badge ($objet, $conn)
+				public function tslesbadges($bdd)
+				{
+					$SQL="SELECT * FROM badge WHERE etat_badge = '0'";
+					$req = $bdd->query($SQL);
+					return $req;
+				}
+
+				Public function suppr_badge ($objet, $bdd)
 				{
 					$id_badge = $objet->get_id_badge();
 
 
 					print $SQL = "UPDATE badge SET etat_badge = '1'
-					WHERE id_badge = '$id_bad'";
-				 	$Req = $conn -> query ($SQL) or die (' Erreur suppression badge ');
+					WHERE id_badge = '$id_badge'";
+				 	$Req = $bdd -> query ($SQL) or die (' Erreur suppression badge ');
 				}
 
 

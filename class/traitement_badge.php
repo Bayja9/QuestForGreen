@@ -1,19 +1,19 @@
 <?php
 session_start();
 //require_once('login.inc.php');
-include "BDDConnection.php";
+include "../includes/BDDConnection.php";
 include "class_badge.php";
 include "letraitementlogin.php";
 
 
 if (isset($_POST['enregistrerb']))
 {
-    $user_util=$_POST['nom_badge'];
-    $pass_util=$_POST['description_badge'];
-    $user_util=$_POST['nom_image_badge'];
+    $n_util=$_POST['nom_badge'];
+    $desc_bad=$_POST['description_badge'];
+    $n_img_bad=$_POST['nom_image_badge'];
 
 
-    $unbadge = new badge ('', $n_bad, $desc_bad, $n_img_bad);
+    $unbadge = new badge ('', $n_bad, $desc_bad, $n_img_bad);
     $unbadge-> ajout_badge($unbadge, $bdd);
     header('Location: ./inscription_badge.php');
 
@@ -35,9 +35,9 @@ if (isset($_POST['modifierb']))
 if (isset($_POST['supprb']))
 {
 
-    $id_badge=$_POST['choix_badge_suppr'];
-    $unbadge = new badge((integer)$id_bad,'','','');
+    $id_badge=$_POST['idbadge'];
+    $unbadge = new badge((integer)$id_badge,'','','');
     $u = $unbadge -> suppr_badge($unbadge, $bdd);
-    header('Location: ./suppr_badge.php');
+    header('Location: ../admin/badges_admin.php');
 }
 ?>
