@@ -37,6 +37,16 @@ function register() {
     xmlhttp.send();
 }
 
+
+function checkMdp() {
+    var register = document.getElementById('register-btn');
+    var mdp = document.getElementById('mdp').value;
+    var mdp2 = document.getElementById('mdp2').value;
+    if (mdp != mdp2) {
+        register.disabled = true;
+    } else register.disabled = mdp == '' || mdp2 == '';
+}
+
 function sendFormEditUsername() {
     var xmlhttp = new XMLHttpRequest();
     var pseudo = document.getElementById("pseudo").value;

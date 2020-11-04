@@ -48,7 +48,7 @@
                             }
                             else
                             {
-                                echo'<div class="alert alert-warning">Email ou pseudonyme déjà existant, si vous avez un compte : <a href="login.php">Connectez-vous !</a></div>';
+                                echo'<div class="alert alert-warning">Email ou pseudonyme déjà existant, si vous avez un compte : <a href="../Login">Connectez-vous !</a></div>';
                             }
                         }
                         else
