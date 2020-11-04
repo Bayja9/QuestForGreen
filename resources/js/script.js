@@ -4,13 +4,14 @@ function connect() {
     var login = document.getElementById("login").value;
     var mdp = document.getElementById("mdp").value;
     xmlhttp.open("GET", "loginSubmit.php?login=" + login + "&mdp=" + mdp, true);
+    xmlhttp.withCredentials = true;
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("getResponseConnect").innerHTML = this.responseText;
-            
+
             setTimeout(() => {
                 if (document.querySelector(".alert-success")) {
-                    document.location.href="/QuestForGreen/Home/";
+                    document.location.href = "/QuestForGreen/Home/";
                 }
             }, 300);
         }
