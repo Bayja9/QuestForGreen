@@ -1,13 +1,12 @@
         
         <?php
+            session_start();
+            require "../includes/BDDConnection.php";
         /*======================================================/
         /             Traitement de la connexion                /
         /======================================================*/
             if(isset($_GET["login"]))
             {
-                session_id($_GET['idsession']);    
-                session_start();
-                require "../includes/BDDConnection.php";
                 //Recupération des valeurs du formuaire dans des variables
                 $login=$_GET['login'];
                 $mdp=$_GET['mdp'];
