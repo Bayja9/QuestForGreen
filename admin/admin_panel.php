@@ -7,7 +7,15 @@
             
         ?>
 
-<div class style="background-image: url('https://cdn.discordapp.com/attachments/651869505370193927/773944508911845426/environmental-protection-683437.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <style>
+        body {
+    color:black;
+    background-color:white;
+    background-image:url(../resources/img/fond_admin.jpg);
+    }
+    </style>
+
+
     </head>
     <body>
         <!--====================================
@@ -15,10 +23,13 @@
         =====================================-->
         
         <div class="container">
-                
-                <a href="utilisateurs_admin.php"><button name="util" class="btn btn-primary">Utilisateurs</button></a>
-                <a href="quetes_admin.php"><button name="quetes" class="btn btn-primary">Quêtes</button></a>
-                <a href="badges_admin.php"><button name="badges" class="btn btn-primary">Badges</button></a>
+        <div class="d-flex justify-content-center">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <a href="utilisateurs_admin.php" class="btn btn-primary" title="utilisateurs" role="button" name="util">Utilisateurs</a>
+                <a href="quetes_admin.php" class="btn btn-primary" title="quetes" role="button"name="quetes">Quêtes</a>
+                <a href="badges_admin.php" class="btn btn-primary" title="badges" role="button"name="badges">Badges</a>
+            </div>
+        </div>    
         </div>
 
       
