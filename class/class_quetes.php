@@ -167,7 +167,6 @@ class quetes
 				{
 					$n_que = $objet->get_nom_quetes();
 					$desc_que = $objet->get_description_quetes();
-					$date_fin_que = $objet->get_date_fin_quetes();
 					$dif_que = $objet->get_difficulte_quetes();
 					$period_que = $objet->get_periode_quetes();
                     $amount_que = $objet->get_amount_quetes();
@@ -187,6 +186,27 @@ class quetes
 					if ($period_que == 'mensuelle')
 					{
 						$id_type_que = 4;
+					}
+
+					$date = new DateTime(date('Y-m-d'));
+					
+					if ($period_que=='principale') {
+						$date_fin_que='NULL';
+					}
+					if ($period_que=='journaliere') {
+						$date->add(new DateInterval('P1D'));
+						$date2 = $date->format('Y-m-d') . "\n";
+						$date_fin_que=$date2;
+					}
+					if ($period_que=='hebdomadaire') {
+						$date->add(new DateInterval('P7D'));
+						$date2 = $date->format('Y-m-d') . "\n";
+						$date_fin_que=$date2;
+					}
+					if ($period_que=='mensuelle') {
+						$date->add(new DateInterval('P30D'));
+						$date2 = $date->format('Y-m-d') . "\n";
+						$date_fin_que=$date2;
 					}
 
 					$SQL = $bdd->prepare("INSERT INTO quetes ( nom_quetes, description_quetes, date_fin_quetes, difficulte_quetes, periode_quetes, amount_quetes, id_type_quetes ) 
@@ -208,7 +228,6 @@ values (:n_que, :desc_que, :date_fin_que, :dif_que, :period_que, :amount_que, :i
 					$id_que = $objet->get_id_quetes();
 					$n_que = $objet->get_nom_quetes();
 					$desc_que = $objet->get_description_quetes();
-					$date_fin_que = $objet->get_date_fin_quetes();
 					$dif_que = $objet->get_difficulte_quetes();
 					$period_que = $objet->get_periode_quetes();
                     $amount_que = $objet->get_amount_quetes();
@@ -230,8 +249,30 @@ values (:n_que, :desc_que, :date_fin_que, :dif_que, :period_que, :amount_que, :i
 					{
 						$id_type_que = 4;
 					}
+
+
+					$date = new DateTime(date('Y-m-d'));
+					
+					if ($period_que=='principale') {
+						$date_fin_que='NULL';
+					}
+					if ($period_que=='journaliere') {
+						$date->add(new DateInterval('P1D'));
+						$date2 = $date->format('Y-m-d') . "\n";
+						$date_fin_que=$date2;
+					}
+					if ($period_que=='hebdomadaire') {
+						$date->add(new DateInterval('P7D'));
+						$date2 = $date->format('Y-m-d') . "\n";
+						$date_fin_que=$date2;
+					}
+					if ($period_que=='mensuelle') {
+						$date->add(new DateInterval('P30D'));
+						$date2 = $date->format('Y-m-d') . "\n";
+						$date_fin_que=$date2;
+					}
 				
-					print $SQL = "UPDATE quetes SET id_quetes = '$id_que', nom_quetes  = '$n_que', description_quetes = '$desc_que', date_fin_quetes = '$date_fin_que', difficulte_quetes = '$dif_que', periode_quetes = '$period_que', amount_quetes = '$amount_que', etat_quetes = '$etat_que', id_type_quetes = '$id_type_que'
+					$SQL = "UPDATE quetes SET id_quetes = '$id_que', nom_quetes  = '$n_que', description_quetes = '$desc_que', date_fin_quetes = '$date_fin_que', difficulte_quetes = '$dif_que', periode_quetes = '$period_que', amount_quetes = '$amount_que', etat_quetes = '$etat_que', id_type_quetes = '$id_type_que'
 					WHERE id_quetes = '$id_que'";
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur modification quetes ');
 				}
@@ -265,7 +306,7 @@ values (:n_que, :desc_que, :date_fin_que, :dif_que, :period_que, :amount_que, :i
 					$id_que = $objet->get_id_quetes();
 
 
-					print $SQL = "UPDATE quetes SET etat_quetes = '1'
+					$SQL = "UPDATE quetes SET etat_quetes = '1'
 					WHERE id_quetes = '$id_que'";
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur suppression quetes ');
 				}

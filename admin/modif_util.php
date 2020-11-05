@@ -14,7 +14,7 @@
         <a href="utilisateurs_admin.php"><button name="retour" class="btn btn-primary">Retour</button></a>
             <?php
                 $id_util=$_POST['idutil'];
-                $o=new utilisateur((integer)$id_util,"","","","","","","","");
+                $o=new utilisateur((integer)$id_util,"","","","","","","","","");
                 $unutilisateur=$o->affiche_utilisateur_total($o,$bdd);
                 $_SESSION['id_utilisateur']=(int)$id_util;
             ?>
