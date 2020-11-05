@@ -291,14 +291,21 @@ h4{
     z-index: -1;
     transition: filter 100ms ease-in-out;
 }
-
+#imgLabel ~ img{
+    transition: filter 100ms ease-in-out;
+}
 #imgLabel:hover ~ img {
     filter: blur(10px);
     transition: filter 100ms ease-in-out;
 }
+#imgLabel span{
+    transition: all 100ms ease-in;
+    opacity: 0;
+}
 #imgLabel:hover span{
     transform: scale(1.2);
-    transition: transform 100ms ease-in;
+    transition: all 100ms ease-in;
+    opacity: 1;
 }
 #img span{
     transition: transform 100ms ease-in;

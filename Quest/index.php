@@ -208,9 +208,7 @@
                     }
                 })
             });
-            function back(){
-                document.location.href = "/QuestForGreen/Home";
-            };
+            
             var deg = 0;
             var pos = 0;
             var lastpos = 0;

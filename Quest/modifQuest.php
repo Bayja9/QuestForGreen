@@ -7,3 +7,4 @@ $requete->bindParam(':newAmout', $_GET["newAmount"]);
 $requete->bindParam(':idquest', $_GET["idQuest"]);
 $requete->bindParam(':iduser', $_GET["idUtilisateur"]);
 $requete->execute();
+
