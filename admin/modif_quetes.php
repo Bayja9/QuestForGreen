@@ -4,12 +4,14 @@
         <?php 
             require "../includes/header.php" ;
             require "../class/class_quetes.php"; 
+            $typequete=new typequete("","");
+            $req2 = $typequete->afftypequete($bdd);
         ?>
     </head>
     <body>
-        <!--========================================
+        <!--==================================
         /       Modification d'un quetes     /
-        =========================================-->
+        ===================================-->
         <div class="container">
         <a href="quetes_admin.php"><button name="retour" class="btn btn-primary">Retour</button></a>
             <?php
@@ -17,6 +19,7 @@
                 $o=new quetes((integer)$id_quetes,"","","","","","","","","","");
                 $unquetes=$o->affiche_quetes_total($o,$bdd);
                 $_SESSION['id_quetes']=(int)$id_quetes;
+
             ?>
         <form action="../class/traitement_quetes.php" method="post">
         <div class="form-group">
@@ -28,20 +31,27 @@
             <input name="description_quetes" type="mail" class="form-control" id="exampleInputEmail1" value="<?php echo $unquetes['description_quetes']?>">
         </div>
         <div class="form-group">
-            <label>Date fin quete</label>
-            <input name="date_fin_quetes" type="date" class="form-control" id="exampleInputEmail1" value="<?php echo $unquetes['date_fin_quetes']?>">
+            <input name="date_fin_quetes" type="hidden" class="form-control" id="exampleInputEmail1" value="<?php echo $unquetes['date_fin_quetes']?>">
         </div>
         <div class="form-group">
             <label>Difficulté</label>
-            <input name="difficulte_quetes" type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $unquetes['difficulte_quetes']?>">
+            <input name="difficulte_quetes" type="number" class="form-control" id="exampleInputEmail1" value="<?php echo $unquetes['difficulte_quetes']?>">
         </div>
         <div class="form-group">
-            <label>Periode </label>
-            <input name="periode_quetes" type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $unquetes['periode_quetes']?>">
+        <label>Type quete</label>
+            <select name="periode_quetes" id="select" class="form-control">
+                        <?php while($row=$req2->fetch())
+                        {
+                        ?>
+                        <option value="<?php echo $row['titre_type_quetes']?>"<?php if($unquetes['id_type_quetes']==$row['id_type_quetes']){ echo "selected='selected'";}?>><?php echo $row['titre_type_quetes']?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
         </div>
         <div class="form-group">
             <label>Amount</label>
-            <input name="amount_quetes" type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $unquetes['amount_quetes']?>">
+            <input name="amount_quetes" type="number" class="form-control" id="exampleInputEmail1" value="<?php echo $unquetes['amount_quetes']?>">
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Etat quetes ( 0=Activé / 1=Desactivé )</label>

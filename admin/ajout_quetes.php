@@ -4,6 +4,8 @@
         <?php 
             require "../includes/header.php" ;
             require "../class/class_quetes.php"; 
+            $typequete=new typequete("","");
+            $req2 = $typequete->afftypequete($bdd);
         ?>
     </head>
     <body>
@@ -23,20 +25,27 @@
             <input name="description_quetes" type="text" class="form-control" id="exampleInputEmail1">
         </div>
         <div class="form-group">
-            <label>Date de fin de quete</label>
-            <input name="date_fin_quetes" type="date" class="form-control" id="exampleInputEmail1">
+            <input name="date_fin_quetes" type="hidden" class="form-control" id="exampleInputEmail1">
         </div>
         <div class="form-group">
             <label>difficulte</label>
-            <input name="difficulte_quetes" type="text" class="form-control" id="exampleInputEmail1">
+            <input name="difficulte_quetes" type="number" class="form-control" id="exampleInputEmail1">
         </div>
         <div class="form-group">
-            <label>periode</label>
-            <input name="periode_quetes" type="text" class="form-control" id="exampleInputEmail1">
+        <label>Type quete</label>
+            <select name="periode_quetes" id="select" class="form-control">
+                        <?php while($row=$req2->fetch())
+                        {
+                        ?>
+                        <option ><?php echo $row['titre_type_quetes']?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
         </div>
         <div class="form-group">
             <label>Amount</label>
-            <input name="amount_quetes" type="text" class="form-control" id="exampleInputEmail1">
+            <input name="amount_quetes" type="number" class="form-control" id="exampleInputEmail1">
         </div>
         
         

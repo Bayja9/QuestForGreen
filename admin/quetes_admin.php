@@ -30,7 +30,7 @@
                 <th scope="col">Progression</th>
                 <th scope="col">Etat</th>
                 <th scope="col">Modifier</th>
-                <th scope="col">Supprimer</th>
+                <th scope="col">Terminer</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,8 +41,15 @@
                 foreach($req as $unequete){
                 $id_quetes=$unequete['id_quetes'];
                 
-            ?>
-                <tr>
+                if ($unequete['etat_quetes']==1)
+                {
+                    ?><tr class="table-active"><?php
+                }
+                else
+                {
+                    ?><tr><?php
+                }
+            ?>  
                 <th scope="row"><?php echo $unequete['nom_quetes']; ?></th>
                     <td><?php echo $unequete['description_quetes']; ?></td>
                     <td><?php echo $unequete['id_type_quetes']; ?></td>
@@ -60,10 +67,13 @@
                         <input name="id_quetes" type="hidden" value="<?php echo $unequete['id_quetes']?>">
                         <td><input methode="POST" type="submit" value="Modifier" name="modifierq"></td>                                    
                     </form>
+                    <?php if ($unequete['etat_quetes']==0){ ?>
                     <form action="../class/traitement_quetes.php" method="post">
                         <input name="id_quetes" type="hidden" value="<?php echo $unequete['id_quetes']?>">
-                        <td><input methode="POST" type="submit" value="Supprimer" name="supprq"></td>                                    
+                        <td><input methode="POST" type="submit" value="Terminer" name="supprq"></td>                                    
                     </form>
+                    <?php } ?>
+
                 </tr>
                 <?php
                 }

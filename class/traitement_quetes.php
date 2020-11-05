@@ -43,7 +43,7 @@ if (isset($_POST['supprq']))
     $id_quetes=$_POST['id_quetes'];
     $unquetes = new quetes((integer)$id_quetes,'','','','','','','','','','');
     $u = $unquetes -> suppr_quetes($unquetes, $bdd);
-    //header('Location: ../admin/quetess_admin.php');
+    header('Location: ../admin/quetes_admin.php');
     
 }
 ?>

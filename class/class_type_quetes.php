@@ -75,6 +75,13 @@ class typequete
 				 $this->titre_type_quetes = $tit_typ_que;
 			}
 
+			public function afftypequete($bdd)
+			{
+			$SQL = "SELECT * FROM type_quetes";
+			$res = $bdd -> query($SQL);
+			return $res;
+			}
+
 	/* ---------------------- */
 	/* FIN class typequete */
 	/* ---------------------- */

@@ -46,7 +46,7 @@
                     <td><?php echo $unutilisateur['xp_utilisateur']; ?></td>
                     <td><?php echo $unutilisateur['points_utilisateur']; ?></td>
                     <td><?php if ($unutilisateur['etat_utilisateur']==2) {
-                                                          echo "admin";
+                                                          echo "<p class='text-danger'>admin</p>";
                                                         }
                                                         else {
                                                           echo "membre";
