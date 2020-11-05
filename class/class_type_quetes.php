@@ -25,7 +25,7 @@ class typequete
 			{
 
 				$this->id_type_quetes = $id_type_que;
-				$this->$titre_type_quetes = $tit_typ_que;
+				$this->titre_type_quetes = $tit_typ_que;
 
 			}
 

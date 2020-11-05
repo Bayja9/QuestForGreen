@@ -1,6 +1,6 @@
 <?php
-include '../class/class_typequete.php';
-include '../includes/BDDconnection.php';
+include '../class/class_type_quetes.php';
+include '../includes/BDDConnection.php';
 
 	/* ---------------------- */
 	/* DEBUT class quetes */
@@ -28,7 +28,7 @@ class quetes
 		/* class quetes Constructeur */
 		/* ---------------------- */
 
-			Public function __construct ($id_que, $n_que, $desc_que, $date_fin_que, $dif_que, $period_que, $amount_que, $etat_que, $id_type_que)
+			Public function __construct ($id_que, $n_que, $desc_que, $date_fin_que, $dif_que, $period_que, $amount_que, $etat_que, $id_typ_que, $tit_typ_que, $bdd)
 			{
 
 				$this->id_quetes = $id_que;
@@ -39,8 +39,8 @@ class quetes
                 $this->periode_quetes = $period_que;
                 $this->amount_quetes = $amount_que;
                 $this->etat_quetes = $etat_que;
-                //$typequete=new typequetes($id_typ_que, $titre_typ_que, $bdd);
-                //$this->$untypequete = $typequete;
+                $typequete=new typequete($id_typ_que, $tit_typ_que, $bdd);
+                $this->untypequete = $typequete;
 
 			}
 
@@ -92,9 +92,9 @@ class quetes
                 return $this->periode_quetes;
 			}
 
-			Public function get_niv ()
+			Public function get_date_fin_quetes ()
             {
-                return $this->niv;
+                return $this->date_fin_quetes;
 			}
 
 			Public function get_amount_quetes ()
@@ -107,10 +107,10 @@ class quetes
                 return $this->etat_quetes;
             }
 
-            Public function get_type_quetes ()
-            {
-                return $this->id_type_quetes;
-            }
+            //Public function get_type_quetes ()
+            //{
+            //    return $this->id_type_quetes;
+            //}
 
 			/* ---------------------- */
 			/* class quetes SET */
@@ -146,11 +146,6 @@ class quetes
 				$this->mail_quetes = $mail_que;
 			}
 
-			Public function set_niv ($niv)
-			{
-				$this->niv = $niv;
-			}
-
 			Public function set_nom_image ($n_img)
 			{
 				$this->nom_image = $n_img;
@@ -173,19 +168,16 @@ class quetes
 
 			Public function ajout_quetes ($objet, $bdd)
 				{
-					$id_que = $objet->get_id_quetes();
 					$n_que = $objet->get_nom_quetes();
 					$desc_que = $objet->get_description_quetes();
 					$date_fin_que = $objet->get_date_fin_quetes();
 					$dif_que = $objet->get_difficulte_quetes();
 					$period_que = $objet->get_periode_quetes();
-					$niv = $objet->get_niv();
                     $amount_que = $objet->get_amount_quetes();
-                    $etat_que = $objet->get_etat_quetes();
-					$typequete= $objet->get_type_quetes();
+					//$typequete= $objet->get_type_quetes();
 
 
-					print $SQL = " INSERT INTO quetes values (NULL, '$n_que', '$desc_que', '$date_fin_que', '$dif_que', '$period_que', '$niv', '$amount_que', '0', '$typequetes')";
+					print $SQL = " INSERT INTO quetes (nom_quetes, description_quetes, date_fin_quetes, difficulte_quetes, periode_quetes, amount_quetes, etat_quetes, id_type_quetes ) values ('$n_que', '$desc_que', '$date_fin_que', '$dif_que', '$period_que', '$amount_que', '0', '0')";
 					$Req = $bdd -> query ($SQL) or die (' Erreur ajout quetes ');
 				}
 
@@ -197,14 +189,12 @@ class quetes
 					$date_fin_que = $objet->get_date_fin_quetes();
 					$dif_que = $objet->get_difficulte_quetes();
 					$period_que = $objet->get_periode_quetes();
-					$niv = $objet->get_niv();
                     $amount_que = $objet->get_amount_quetes();
                     $etat_que = $objet->get_etat_quetes();
-					$typequete= $objet->get_type_quetes();
+					//$typequete= $objet->get_type_quetes();
 				
 					print $SQL = "UPDATE quetes SET id_quetes = '$id_que', nom_quetes  = '$n_que', description_quetes = '$desc_que',
-          			date_fin_quetes = '$date_fin_que', difficulte_quetes = '$dif_que', periode_quetes = '$period_que', niv = '$niv',
-                    amount_quetes = '$amount_que',  typequete = '$typequete'
+          			date_fin_quetes = '$date_fin_que', difficulte_quetes = '$dif_que', periode_quetes = '$period_que', amount_quetes = '$amount_que', etat_quetes = '$etat_que'
 					WHERE id_quetes = '$id_que'";
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur modification quetes ');
 				}
@@ -217,19 +207,18 @@ class quetes
 					$date_fin_que = $objet->get_date_fin_quetes();
 					$dif_que = $objet->get_difficulte_quetes();
 					$period_que = $objet->get_periode_quetes();
-					$niv = $objet->get_niv();
 					$amount_que = $objet->get_amount_quetes();
-					$typequete= $objet->get_type_quetes();
+					//$typequete= $objet->get_type_quetes();
 					
 
-					print $SQL = " SELECT * From quetes WHERE id_quetes = '$id_que'";
+					$SQL = " SELECT * From quetes WHERE id_quetes = '$id_que'";
 					$Req = $bdd -> query ($SQL) or die (' Erreur affichage quetes ');
 					return $Res = $Req -> fetch ();
 				}
 
 				public function tslesquetes($bdd)
 				{
-					$SQL="SELECT * FROM quetes ORDER BY etat_quetes, nom_quetes";
+					$SQL="SELECT * FROM quetes ORDER BY etat_quetes, nom_quetes";
 					$req = $bdd->query($SQL);
 					return $req;
 				}
