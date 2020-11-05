@@ -20,7 +20,6 @@ class utilisateur
 		Private $mail_utilisateur;
 		Private $niv_util;
 		Private $nom_image;
-		Private $suivi_quete_principale;
         Private $etat_utilisateur;
 
 
@@ -29,7 +28,7 @@ class utilisateur
 		/* class utilisateur Constructeur */
 		/* ---------------------- */
 
-			Public function __construct($id_util, $user_util, $pass_util, $xp_util, $pts_util, $mail_util, $niv_util , $n_img, $suivi, $etat_util)
+			Public function __construct($id_util, $user_util, $pass_util, $xp_util, $pts_util, $mail_util, $niv_util , $n_img, $etat_util)
 			{
 
 				$this->id_utilisateur = $id_util;
@@ -40,7 +39,6 @@ class utilisateur
 				$this->mail_utilisateur = $mail_util;
 				$this->niv_util = $niv_util;
 				$this->nom_image = $n_img;
-				$this->suivi_quete_principale = $suivi;
                 $this->etat_utilisateur = $etat_util;
 
 			}
@@ -59,7 +57,6 @@ class utilisateur
 				$data = $data.$this->mail_utilisateur;
 				$data = $data.$this->niv_util;
 				$data = $data.$this->nom_image;
-				$data = $data.$this->suivi_quete_principale;
 				$data = $data.$this->etat_utilisateur;
 
 				return $data;
@@ -108,11 +105,7 @@ class utilisateur
             {
                 return $this->nom_image;
 			}
-			
-			Public function get_suivi_quete_principale ()
-            {
-                return $this->suivi_quete;
-            }
+
 
 
             Public function get_etat_utilisateur ()
@@ -164,10 +157,7 @@ class utilisateur
 				$this->nom_image = $n_img;
 			}
 
-			Public function set_suivi_quete_principale ($suivi)
-			{
-				$this->suivi_quete_principale = $suivi;
-			}			
+					
 
 			Public function set_etat_utilisateur ($etat_utilisateur)
 			{
@@ -206,12 +196,11 @@ class utilisateur
 					$mail_util = $objet->get_mail_utilisateur();
 					$niv = $objet->get_niv();
 					$n_img = $objet->get_nom_image();
-					$suivi = $objet->get_suivi_quete_principale();
 					$etat_util= $objet->get_etat_utilisateur();
 
 				
 					$SQL = "UPDATE utilisateur SET id_utilisateur = '$id_util', username_utilisateur  = '$user_util',
-          			xp_utilisateur = '$xp_util', points_utilisateur = '$pts_util', mail_utilisateur = '$mail_util', niv = '$niv', nom_image = '$n_img', suivi_quetes_principale = '$suivi', etat_utilisateur  = '$etat_util'
+          			xp_utilisateur = '$xp_util', points_utilisateur = '$pts_util', mail_utilisateur = '$mail_util', niv = '$niv', nom_image = '$n_img', etat_utilisateur  = '$etat_util'
 					WHERE id_utilisateur = '$id_util'";
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur modification utilisateur ');
 				}

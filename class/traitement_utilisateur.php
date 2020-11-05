@@ -29,17 +29,17 @@ if (isset($_POST['modifieru']))
     $etat_util=$_POST['etat_utilisateur'];
     $nom_img=$_POST['nom_img_utilisateur'];
 
-    $unutilisateur = new utilisateur ($id_util, $user_util, '', $xp_util, $points_util, $mail_util, $niv_util, $nom_img, $etat_util,'');
+    $unutilisateur = new utilisateur ($id_util, $user_util, '', $xp_util, $points_util, $mail_util, $niv_util, $nom_img,$etat_util);
     $unutilisateur-> modif_utilisateur($unutilisateur, $bdd);
-    //$_SESSION['id_utilisateur']='';
+    var_dump($unutilisateur);
     header('Location: ../admin/utilisateurs_admin.php');
-
+    
 }
 if (isset($_POST['suppru']))
 {
 
     $id_utilisateur=$_POST['idutil'];
-    $unutilisateur = new utilisateur((integer)$id_utilisateur,'','','','','','','','','');
+    $unutilisateur = new utilisateur((integer)$id_utilisateur,'','','','','','','','');
     $u = $unutilisateur -> suppr_utilisateur($unutilisateur, $bdd);
     header('Location: ../admin/utilisateurs_admin.php');
 }
