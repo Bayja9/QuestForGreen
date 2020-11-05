@@ -106,11 +106,15 @@ function hideFormEditEmail() {
     document.getElementById("showFormEditEmail").style.display = "none";
     document.getElementById("showButtonEditEmail").style.display = "flex";
 }
+
 var loadFile = function() {
     var image = document.getElementById('output');
+    var submitButton = document.getElementById('submit-image-btn')
     image.src = URL.createObjectURL(event.target.files[0]);
+    if(event.target.files[0]){
+        submitButton.style.display = 'block'
+    }
 };
-
 function back(){
     document.location.href = "/QuestForGreen/Home";
 };
