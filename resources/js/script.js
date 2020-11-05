@@ -110,3 +110,7 @@ var loadFile = function() {
     var image = document.getElementById('output');
     image.src = URL.createObjectURL(event.target.files[0]);
 };
+
+function back(){
+    document.location.href = "/QuestForGreen/Home";
+};
