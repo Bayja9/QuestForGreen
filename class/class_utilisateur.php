@@ -17,7 +17,9 @@ class utilisateur
 		Private $password_utilisateur;
         Private $xp_utilisateur;
         Private $points_utilisateur;
-        Private $mail_utilisateur;
+		Private $mail_utilisateur;
+		Private $niv_util;
+		Private $nom_image;
         Private $etat_utilisateur;
 
 
@@ -26,7 +28,7 @@ class utilisateur
 		/* class utilisateur Constructeur */
 		/* ---------------------- */
 
-			Public function __construct ($id_util, $user_util, $pass_util, $xp_util, $pts_util, $mail_util, $etat_util)
+			Public function __construct($id_util, $user_util, $pass_util, $xp_util, $pts_util, $mail_util, $niv_util , $n_img, $etat_util)
 			{
 
 				$this->id_utilisateur = $id_util;
@@ -34,7 +36,9 @@ class utilisateur
 				$this->password_utilisateur = $pass_util;
                 $this->xp_utilisateur = $xp_util;
                 $this->points_utilisateur = $pts_util;
-                $this->mail_utilisateur = $mail_util;
+				$this->mail_utilisateur = $mail_util;
+				$this->niv_util = $niv_util;
+				$this->nom_image = $n_img;
                 $this->etat_utilisateur = $etat_util;
 
 			}
@@ -50,7 +54,9 @@ class utilisateur
 				$data = $data.$this->password_utilisateur;
                 $data = $data.$this->xp_utilisateur;
                 $data = $data.$this->points_utilisateur;
-                $data = $data.$this->mail_utilisateur;
+				$data = $data.$this->mail_utilisateur;
+				$data = $data.$this->niv_util;
+				$data = $data.$this->nom_image;
 				$data = $data.$this->etat_utilisateur;
 
 				return $data;
@@ -88,7 +94,19 @@ class utilisateur
 			Public function get_mail_utilisateur ()
             {
                 return $this->mail_utilisateur;
+			}
+			
+			Public function get_niv ()
+            {
+                return $this->niv_util;
             }
+
+			Public function get_nom_image ()
+            {
+                return $this->nom_image;
+			}
+
+
 
             Public function get_etat_utilisateur ()
             {
@@ -129,6 +147,18 @@ class utilisateur
 				$this->mail_utilisateur = $mail_util;
 			}
 
+			Public function set_niv ($niv_util)
+			{
+				$this->niv = $niv_util;
+			}
+
+			Public function set_nom_image ($n_img)
+			{
+				$this->nom_image = $n_img;
+			}
+
+					
+
 			Public function set_etat_utilisateur ($etat_utilisateur)
 			{
 				 $this->etat_utilisateur = $etat_utilisateur;
@@ -146,10 +176,13 @@ class utilisateur
 					$pass_util = $objet->get_password_utilisateur();
 					$xp_util = $objet->get_xp_utilisateur();
 					$pts_util = $objet->get_points_utilisateur();
+					$mail_util = $objet->get_point_utilisateur();
+					$niv = $objet->get_niv();
+					$n_img = $objet->get_nom_image();
 					$etat_util= $objet->get_etat_utilisateur();
 
 
-					print $SQL = " INSERT INTO utilisateur values (NULL, '$user_util', '$pass_util', '$xp_util', '$pts_util','0')";
+					print $SQL = " INSERT INTO utilisateur values (NULL, '$user_util', '$pass_util', '$xp_util', '$pts_util', '$mail_util', '$niv', '$n_img',0')";
 					$Req = $bdd -> query ($SQL) or die (' Erreur ajout utilisateur ');
 				}
 
@@ -157,14 +190,17 @@ class utilisateur
 				{
 					$id_util = $objet->get_id_utilisateur();
 					$user_util = $objet->get_username_utilisateur();
-					$pass_util = $objet->get_password_utilisateur();
+					$mail_util = $objet->get_mail_utilisateur();
 					$xp_util = $objet->get_xp_utilisateur();
 					$pts_util = $objet->get_points_utilisateur();
+					$mail_util = $objet->get_mail_utilisateur();
+					$niv = $objet->get_niv();
+					$n_img = $objet->get_nom_image();
 					$etat_util= $objet->get_etat_utilisateur();
 
 				
-					print $SQL = "UPDATE utilisateur SET id_utilisateur = '$id_util', username_utilisateur  = '$user_util', password_utilisateur = '$pass_util',
-          			etat_utilisateur  = '$etat_util'
+					$SQL = "UPDATE utilisateur SET id_utilisateur = '$id_util', username_utilisateur  = '$user_util',
+          			xp_utilisateur = '$xp_util', points_utilisateur = '$pts_util', mail_utilisateur = '$mail_util', niv = '$niv', nom_image = '$n_img', etat_utilisateur  = '$etat_util'
 					WHERE id_utilisateur = '$id_util'";
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur modification utilisateur ');
 				}
@@ -174,19 +210,23 @@ class utilisateur
 					$id_util = $objet->get_id_utilisateur();
 					$user_util = $objet->get_username_utilisateur();
 					$pass_util = $objet->get_password_utilisateur();
+					$mail_util = $objet->get_mail_utilisateur();
 					$xp_util = $objet->get_xp_utilisateur();
 					$pts_util = $objet->get_points_utilisateur();
+					$mail_util = $objet->get_mail_utilisateur();
+					$niv = $objet->get_niv();
+					$n_img = $objet->get_nom_image();
 					$etat_util= $objet->get_etat_utilisateur();
 					
 
-					print $SQL = " SELECT * From utilisateur WHERE id_utilisateur = '$id_util'";
+					$SQL = " SELECT * From utilisateur WHERE id_utilisateur = '$id_util'";
 					$Req = $bdd -> query ($SQL) or die (' Erreur affichage utilisateur ');
 					return $Res = $Req -> fetch ();
 				}
 
 				public function tslesutilisateurs($bdd)
 				{
-					$SQL="SELECT * FROM utilisateur ORDER BY etat_utilisateur,username_utilisateur";
+					$SQL="SELECT * FROM utilisateur WHERE etat_utilisateur='0' OR etat_utilisateur='2' ORDER BY etat_utilisateur,username_utilisateur";
 					$req = $bdd->query($SQL);
 					return $req;
 				}
@@ -196,7 +236,7 @@ class utilisateur
 					$id_util = $objet->get_id_utilisateur();
 
 
-					print $SQL = "UPDATE utilisateur SET etat_utilisateur = '1'
+					$SQL = "UPDATE utilisateur SET etat_utilisateur = '1'
 					WHERE id_utilisateur = '$id_util'";
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur suppression utilisateur ');
 				}

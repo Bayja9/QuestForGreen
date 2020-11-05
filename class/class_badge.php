@@ -1,6 +1,6 @@
 <?php
-
-include 'BDDConnection.php';
+include 'class_utilisateur.php';
+include '../includes/BDDConnection.php';
 
 	/* ---------------------- */
 	/* DEBUT class badge */
@@ -15,21 +15,23 @@ class badge
 		Private $id_badge;
 		Private $nom_badge;
 		Private $description_badge;
-        Private $nom_image_badge;
+		Private $nom_image_badge;
+		Private $etat_badge;
+		Private $unutilisateur;
 
 
 		/* ---------------------- */
 		/* class badge Constructeur */
 		/* ---------------------- */
 
-			Public function __construct ($id_bad, $n_bad, $desc_bad, $n_img_bad)
+			Public function __construct ($id_bad, $n_bad, $desc_bad, $n_img_bad, $etat_bad, $bdd)
 			{
 
 				$this->id_badge = $id_bad;
 				$this->nom_badge = $n_bad;
 				$this->description_badge = $desc_bad;
-                $this->nom_image_badge = $n_img_bad;
-
+				$this->nom_image_badge = $n_img_bad;
+				$this->etat_badge = $etat_bad;
 			}
 
 			/* ---------------------- */
@@ -41,7 +43,8 @@ class badge
 				$data = $this->id_badge;
 				$data = $data.$this->nom_badge;
 				$data = $data.$this->description_badge;
-                $data = $data.$this->nom_image_badge;
+				$data = $data.$this->nom_image_badge;
+				$data = $data.$this->etat_badge;
 
 
 				return $data;
@@ -69,7 +72,17 @@ class badge
             Public function get_nom_image_badge ()
             {
                 return $this->nom_image_badge;
-            }
+			}
+
+			Public function get_etat_badge ()
+            {
+                return $this->etat_badge;
+			}
+			
+			//Public function get_utilisateur ()
+            //{
+            //    return $this->id_utilisateur;
+            //}
 
 			/* ---------------------- */
 			/* class badge SET */
@@ -95,59 +108,79 @@ class badge
 				 $this->nom_image_badge = $n_img_bad;
 			}
 
+			Public function set_etat_badge ($etat_bad)
+			{
+				 $this->etat_badge = $etat_bad;
+			}
+
+
 
 			/* ---------------------- */
 			/* class Box fonctions publiques */
 			/* ---------------------- */
 
 
-			Public function ajout_badge ($objet, $conn)
+			Public function ajout_badge ($objet, $bdd)
 				{
 					$id_badge = $objet->get_id_badge();
 					$nom_badge = $objet->get_nom_badge();
 					$description_badge = $objet->get_description_badge();
 					$nom_image_badge = $objet->get_nom_image_badge();
+					$etat_bad = $objet->get_etat_badge();
+					//$utilisateur = $objet->get_utilisateur();
 
 
-					print $SQL = " INSERT INTO badge values (NULL, '$n_badge', '$desc_badge', '$nom_image_badge')";
-					$Req = $conn -> query ($SQL) or die (' Erreur ajout badge ');
+					print $SQL = "INSERT INTO badge (nom_badge, description_badge, nom_image_badge, id_utilisateur) values ('$nom_badge','$description_badge','$nom_image_badge','0')";
+					$Req = $bdd -> query ($SQL) or die (' Erreur ajout badge ');
 				}
 
-				Public function modif_badge ($objet, $conn)
+				Public function modif_badge ($objet, $bdd)
 				{
 					$id_badge = $objet->get_id_badge();
 					$nom_badge = $objet->get_nom_badge();
 					$description_badge = $objet->get_description_badge();
 					$nom_image_badge = $objet->get_nom_image_badge();
-
+					$etat_badge = $objet->get_etat_badge();
+					//$utilisateur = $objet->get_utilisateur();
 				
-					print $SQL = "UPDATE badge SET id_badge = '$id_bad', nom_badge  = '$n_badge', description_badge = '$desc_badge'
-          			nom_image_badge  = '$n_img_bad'
-					WHERE id_badge = '$id_util'";
-				 	$Req = $conn -> query ($SQL) or die (' Erreur modification badge ');
+
+					$SQL = "UPDATE badge SET id_badge = '$id_badge', nom_badge  = '$nom_badge', description_badge = '$description_badge',
+          			nom_image_badge  = '$nom_image_badge', etat_badge = '$etat_badge'
+					WHERE id_badge = '$id_badge'";
+				 	$Req = $bdd -> query ($SQL) or die (' Erreur modification badge ');
 				}
 
-				Public function affiche_badge_total($objet, $conn)
+				Public function affiche_badge_total($objet, $bdd)
 				{
 					$id_badge = $objet->get_id_badge();
 					$nom_badge = $objet->get_nom_badge();
 					$description_badge = $objet->get_description_badge();
 					$nom_image_badge = $objet->get_nom_image_badge();
+					$etat_bad = $objet->get_etat_badge();
+					//$utilisateur = $objet->get_utilisateur();
 					
 
-					print $SQL = " SELECT * From badge WHERE id_badge = '$id_bad'";
-					$Req = $conn -> query ($SQL) or die (' Erreur affichage badge ');
+					$SQL = " SELECT * From badge WHERE id_badge = '$id_badge'";
+					$Req = $bdd -> query ($SQL) or die (' Erreur affichage badge ');
 					return $Res = $Req -> fetch ();
 				}
 
-				Public function suppr_badge ($objet, $conn)
+				public function tslesbadges($bdd)
+				{
+					$SQL="SELECT * FROM badge ORDER BY etat_badge";
+					$req = $bdd->query($SQL);
+					return $req;
+				}
+
+				Public function suppr_badge ($objet, $bdd)
 				{
 					$id_badge = $objet->get_id_badge();
+					//$utilisateur = $objet->get_utilisateur();
 
 
 					print $SQL = "UPDATE badge SET etat_badge = '1'
-					WHERE id_badge = '$id_bad'";
-				 	$Req = $conn -> query ($SQL) or die (' Erreur suppression badge ');
+					WHERE id_badge = '$id_badge'";
+				 	$Req = $bdd -> query ($SQL) or die (' Erreur suppression badge ');
 				}
 
 
