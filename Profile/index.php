@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html style="height: 100%">
 <?php
-require "../includes/header.php"
+    require "../includes/header.php"
 ?>
-<?php require "function_profile.php" ?>
+<?php
+    require "function_profile.php";
+?>
 <LINK rel="stylesheet" href="../resources/css/home.css"/>
 <link rel="icon" type="image/png" href="../resources/img/logoV2.png" />
 <title>QuestForGreen - Home</title>
@@ -16,12 +18,20 @@ require "../includes/header.php"
         <div id="block1">
             <div id="userImg" class="d-flex justify-content-center align-items-center">
                 <img id="output" width="201px" style="border-radius: 100%; padding: 7px" height="200px" src="<?php echo isset($_SESSION['img'])? $_SESSION['img'] : '../resources/img/no-img.jpg'?>">
-                <span class="btn btn-file" style="position: absolute; bottom: 0;">
-                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="black" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-                     </svg>
+            </div>
+            <form  class="d-flex" style="position: absolute; top: 100px; left: 75px;" action="#" method="post" enctype="multipart/form-data">
+                <button type="submit" value="Upload Image" name="submit" class="btn btn-file btn-dark">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                    </svg>
                     <input id="file" onchange="loadFile()" type="file" name="img">
-                </span>
+                </button>
+                <button id="submit-image-btn" style="display:none" class="ml-3 btn btn-success" type="submit" value="Upload Image" name="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                </button>
+            </form>
+            <div>
+                <?php require 'editImageSubmit.php'?>
             </div>
         </div>
         <div id="block2" class="d-flex">
@@ -54,8 +64,8 @@ require "../includes/header.php"
                 <div class="badge-content">
                     <h3 class="text-center font-Aclonica"> Derniers badges gagnés: </h3>
                     <div class="d-flex justify-content-center">
-                        <img class="mx-2 badge-img" height="75" src="../resources/img/glass_bottle.png">
-                        <img class="mx-2 badge-img" height="75" src="../resources/img/glass_bottle.png">
+                        <img class="mx-2 badge-img bg-white" width="75" height="75" src="../resources/img/leaf.png">
+                        <img class="mx-2 badge-img bg-white" width="75" height="75" src="../resources/img/glass_bottle.png">
                     </div>
                 </div>
             </div>
