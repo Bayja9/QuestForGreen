@@ -3,6 +3,7 @@
     <?php 
         require "../includes/header.php";
         require "../includes/BDDConnection.php";
+         require "../Profile/function_profile.php";
 
         $requete = $bdd->prepare("SELECT quetes.id_quetes,id_quetes_utilisateur,nom_quetes,description_quetes,amount_done_utilisateur,amount_quetes,etat_quetes,periode_quetes FROM quetes,quetes_utilisateur WHERE quetes.id_quetes = quetes_utilisateur.id_quetes AND quetes_utilisateur.id_utilisateur = :id");
         $requete->bindParam(':id', $_SESSION["id"]);
@@ -178,6 +179,19 @@
                     <div id="page4" class="page">
                     <div id="ligne"></div>
                     <h4>Accomplies</h4>
+                    <table class="table">
+                        <thead class="text-center">
+                        <tr>
+                            <th scope="col">Nom de la quête</th>
+                            <th scope="col">Date de validation</th>
+                            <th scope="col">Nombre de confirmation</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center r-vertical">
+                        <?php getQuestsValidate() ?>
+                        </tbody>
+                    </table>
+                    
                     </div>
                 </div>
                 <div id="formQuete" class="blockpage">
@@ -386,6 +400,8 @@
                                     document.querySelector("#blockpage4").style.zIndex = "3";
                                     document.querySelector("#page4 div").setAttribute("hidden","");
                                     document.querySelector("#page4 h4").setAttribute("hidden","");
+                                    document.querySelector("#page4 table").setAttribute("hidden","");
+
 
                                 }
                                 if (deg2 > -90 ) { 
@@ -421,6 +437,7 @@
                                     document.querySelector("#blockpage4").style.zIndex = "0";
                                     document.querySelector("#page4 div").removeAttribute("hidden","");
                                     document.querySelector("#page4 h4").removeAttribute("hidden","");
+                                    document.querySelector("#page4 table").removeAttribute("hidden","");
                                 }
                             }else{
                                 deg2 = 0;
