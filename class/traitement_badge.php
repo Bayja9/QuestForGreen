@@ -3,7 +3,6 @@ session_start();
 //require_once('login.inc.php');
 include "../includes/BDDConnection.php";
 include "class_badge.php";
-include "letraitementlogin.php";
 
 
 if (isset($_POST['enregistrerb']))
@@ -25,8 +24,10 @@ if (isset($_POST['modifierb']))
     $n_bad=$_POST['nom_badge'];
     $desc_bad=$_POST['description_badge'];
     $n_img_bad=$_POST['nom_image_badge'];
+    $etat_badge=$_POST['etat_badge'];
 
-    $unbadge = new badge ($id_bad, $n_bad, $desc_bad, $n_img_bad,"","","","","","","","","","","");
+
+    $unbadge = new badge ($id_bad, $n_bad, $desc_bad, $n_img_bad,$etat_badge,"","","","","","","","","","");
     $unbadge-> modif_badge($unbadge, $bdd);
     var_dump($unbadge);
     header('Location: ../admin/badges_admin.php');

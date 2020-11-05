@@ -34,7 +34,10 @@
         </div>
         <div id="UImenu">
             <div id="block1">
-                <div id="userImg"></div>
+                <div id="userImg">
+                <img id="output" width="201px" style="border-radius: 100%; padding: 7px" height="200px" src="<?php echo $result['nom_image'] != NULL ? "uploads/".$result['nom_image'] : '../resources/img/no-img.jpg'?>">
+                    
+                </div>
                 <label id="username"><?php echo $_SESSION["pseudo"] ?></label>
             </div>
             <div id="block2">

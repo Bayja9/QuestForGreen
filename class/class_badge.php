@@ -147,6 +147,7 @@ class badge
 					$SQL = "UPDATE badge SET id_badge = '$id_badge', nom_badge  = '$nom_badge', description_badge = '$description_badge',
           			nom_image_badge  = '$nom_image_badge', etat_badge = '$etat_badge'
 					WHERE id_badge = '$id_badge'";
+					var_dump($objet->get_etat_badge());
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur modification badge ');
 				}
 

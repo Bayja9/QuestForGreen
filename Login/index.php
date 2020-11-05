@@ -30,7 +30,7 @@
                 </div>
                 <div class="d-flex justify-content-around align-items-center">
                     <a href="../Register">Créer un compte</a>
-                    <button onclick="connect()" class="font-Aclonica btn btn-login">Connexion</button>
+                    <button type="submit" onclick="connect()" class="font-Aclonica btn btn-login">Connexion</button>
                 </div>
                 <div align="center" class="getResponseConnect" id="getResponseConnect"></div>
             </div>

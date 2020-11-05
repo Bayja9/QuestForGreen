@@ -6,6 +6,14 @@
             $requete->bindParam(':id', $_SESSION["id"]);
             $requete->execute();
             $result = $requete->fetch();
+
+            $_SESSION['id'] = $result['id_utilisateur'];
+            $_SESSION['email'] = $result['mail_utilisateur'];	
+            $_SESSION['pseudo'] = $result['username_utilisateur'];
+            $_SESSION['xp'] = $result['xp_utilisateur'];
+            $_SESSION['point'] = $result['points_utilisateur'];
+            $_SESSION['niv'] = $result['niv'];
+            $_SESSION['img'] = $result['nom_image'];
 ?>
 <?php require "function_profile.php" ?>
 <LINK rel="stylesheet" href="../resources/css/home.css"/>
@@ -19,7 +27,7 @@
     <div id="UImenuTop" >
         <div id="block1">
             <div id="userImg" class="d-flex justify-content-center align-items-center">
-                <img id="output" width="201px" style="border-radius: 100%; padding: 7px" height="200px" src="<?php echo $_SESSION['img'] != NULL? "uploads/".$_SESSION['img'] : '../resources/img/no-img.jpg'?>">
+                <img id="output" width="201px" style="border-radius: 100%; padding: 7px" height="200px" src="<?php echo $result['nom_image'] != NULL ? "uploads/".$result['nom_image'] : '../resources/img/no-img.jpg'?>">
             </div>
             <form  class="d-flex" style="position: absolute; top: 100px; left: 75px;" action="#" method="post" enctype="multipart/form-data">
                 <button type="submit" value="Upload Image" name="submit" class="btn btn-file btn-dark">
@@ -33,7 +41,9 @@
                 </button>
             </form>
             <div>
-                <?php require 'editImageSubmit.php'?>
+                <?php 
+                    require 'editImageSubmit.php'
+                ?>
             </div>
         </div>
         <div id="block2" class="d-flex">
@@ -199,6 +209,8 @@
     function friend() {
         document.location.href = "/QuestForGreen/Friend";
     }
+
+    
 </script>
 </body>
 </html>

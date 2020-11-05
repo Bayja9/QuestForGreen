@@ -209,12 +209,11 @@ class quetes
 						$date_fin_que=$date2;
 					}
 
-					$SQL = $bdd->prepare("INSERT INTO quetes ( nom_quetes, description_quetes, date_fin_quetes, difficulte_quetes, periode_quetes, amount_quetes, id_type_quetes ) 
-values (:n_que, :desc_que, :date_fin_que, :dif_que, :period_que, :amount_que, :id_type_que)");
+					$SQL = $bdd->prepare("INSERT INTO quetes ( nom_quetes, description_quetes, difficulte_quetes, periode_quetes, amount_quetes, id_type_quetes ) 
+										  values (:n_que, :desc_que, :dif_que, :period_que, :amount_que, :id_type_que)");
 
 					$SQL->bindParam(':n_que', $n_que);
 					$SQL->bindParam(':desc_que', $desc_que);
-					$SQL->bindParam(':date_fin_que', $date_fin_que);
 					$SQL->bindParam(':dif_que', $dif_que);
 					$SQL->bindParam(':period_que', $period_que);
 					$SQL->bindParam(':amount_que', $amount_que);
