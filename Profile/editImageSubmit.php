@@ -38,6 +38,7 @@ if ($_FILES) {
                 $requete = $bdd->prepare("UPDATE utilisateur SET nom_image = '". $_FILES["img"]["name"]. "' where id_utilisateur=:id");
                 $requete->bindParam(':id', $_SESSION['id']);
                 if($requete->execute()){
+                    $_SESSION['img'] = $_FILES["img"]["name"];
                     echo "<div class='white-background'>Votre photo de profil a bien été modifié</div>";
                 }
             } else {
