@@ -28,7 +28,7 @@ if (isset($_POST['modifierb']))
 
     $unbadge = new badge ($id_bad, $n_bad, $desc_bad, $n_img_bad,"","","","","","","","","","","");
     $unbadge-> modif_badge($unbadge, $bdd);
-    //$_SESSION['id_badge']='';
+    var_dump($unbadge);
     header('Location: ../admin/badges_admin.php');
 
 }

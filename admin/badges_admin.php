@@ -30,7 +30,7 @@
             <tbody>
             <?php
                 //roles = admin, member, user
-                $o=new badge("","","","","","","","","","","","","","","");
+                $o=new badge("","","","","","");
                 $req=$o->tslesbadges($bdd);
                 foreach($req as $unbadge){
                 $id_badge=$unbadge['id_badge'];
@@ -44,10 +44,16 @@
                         <input name="idbadge" type="hidden" value="<?php echo $id_badge?>">
                         <td><input methode="POST" type="submit" value="Modifier" name="modifierb"></td>                                    
                     </form>
+                    <?php if ($unbadge['etat_badge']==0){ ?>
                     <form action="../class/traitement_badge.php" method="post">
                         <input name="idbadge" type="hidden" value="<?php echo $id_badge?>">
-                        <td><input methode="POST" type="submit" value="Supprimer" name="supprb"></td>                                    
+                        <td><input methode="POST" type="submit" value="Desactiver" name="supprb"></td>                                    
                     </form>
+                    <?php }
+                        else
+                        { ?>
+                            <td><p class="text-danger">Desactivé</p></td>
+                      <?php  } ?>
                 </tr>
                 <?php
                 }

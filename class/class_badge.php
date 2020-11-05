@@ -24,7 +24,7 @@ class badge
 		/* class badge Constructeur */
 		/* ---------------------- */
 
-			Public function __construct ($id_bad, $n_bad, $desc_bad, $n_img_bad, $id_util, $etat_bad, $user_util, $pass_util, $xp_util, $pts_util, $mail_util, $niv_util, $n_img, $etat_util, $bdd)
+			Public function __construct ($id_bad, $n_bad, $desc_bad, $n_img_bad, $etat_bad, $bdd)
 			{
 
 				$this->id_badge = $id_bad;
@@ -32,8 +32,6 @@ class badge
 				$this->description_badge = $desc_bad;
 				$this->nom_image_badge = $n_img_bad;
 				$this->etat_badge = $etat_bad;
-				$utilisateur=new utilisateur($id_util, $pass_util, $user_util, $xp_util, $pts_util, $mail_util, $niv_util, $n_img, $etat_util, $bdd);
-				$unutilisateur=$utilisateur;
 			}
 
 			/* ---------------------- */
@@ -45,7 +43,8 @@ class badge
 				$data = $this->id_badge;
 				$data = $data.$this->nom_badge;
 				$data = $data.$this->description_badge;
-                $data = $data.$this->nom_image_badge;
+				$data = $data.$this->nom_image_badge;
+				$data = $data.$this->etat_badge;
 
 
 				return $data;
@@ -114,10 +113,6 @@ class badge
 				 $this->etat_badge = $etat_bad;
 			}
 
-			Public function set_utilisateur ($utilisateur)
-			{
-				 $this->id_utilisateur = $utilisateur;
-			}
 
 
 			/* ---------------------- */
@@ -150,7 +145,7 @@ class badge
 				
 
 					$SQL = "UPDATE badge SET id_badge = '$id_badge', nom_badge  = '$nom_badge', description_badge = '$description_badge',
-          			nom_image_badge  = '$nom_image_badge'
+          			nom_image_badge  = '$nom_image_badge', etat_badge = '$etat_badge'
 					WHERE id_badge = '$id_badge'";
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur modification badge ');
 				}
