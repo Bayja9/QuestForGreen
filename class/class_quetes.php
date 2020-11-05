@@ -1,11 +1,6 @@
 <?php
-<<<<<<< HEAD
 include '../class/class_type_quetes.php';
 include '../includes/BDDConnection.php';
-=======
-include '../class/class_utilisateur.php';
-include '../includes/BDDconnection.php';
->>>>>>> cc59d745c4e1f5e20c3b1abd6039386f44311429
 
 	/* ---------------------- */
 	/* DEBUT class quetes */
@@ -33,11 +28,7 @@ class quetes
 		/* class quetes Constructeur */
 		/* ---------------------- */
 
-<<<<<<< HEAD
 			Public function __construct ($id_que, $n_que, $desc_que, $date_fin_que, $dif_que, $period_que, $amount_que, $etat_que, $id_typ_que, $tit_typ_que, $bdd)
-=======
-			Public function __construct ($id_que, $n_que, $desc_que, $date_fin_que, $dif_que, $period_que, $niv, $amount_que, $etat_que)
->>>>>>> cc59d745c4e1f5e20c3b1abd6039386f44311429
 			{
 
 				$this->id_quetes = $id_que;
@@ -46,16 +37,10 @@ class quetes
                 $this->date_fin_quetes = $date_fin_que;
                 $this->difficulte_quetes = $dif_que;
                 $this->periode_quetes = $period_que;
-                $this->niv = $niv;
                 $this->amount_quetes = $amount_que;
                 $this->etat_quetes = $etat_que;
-<<<<<<< HEAD
                 $typequete=new typequete($id_typ_que, $tit_typ_que, $bdd);
                 $this->untypequete = $typequete;
-=======
-                $typequete=new typequetes($id_typ_que, $titre_typ_que, $bdd);
-                $this->$untypequete = $typequete;
->>>>>>> cc59d745c4e1f5e20c3b1abd6039386f44311429
 
 			}
 
@@ -237,7 +222,7 @@ class quetes
 					return $Res = $Req -> fetch ();
 				}
 
-				public function tslesquetess($bdd)
+				public function tslesquetes($bdd)
 				{
 					$SQL="SELECT * FROM quetes ORDER BY etat_quetes, nom_quetes";
 					$req = $bdd->query($SQL);
