@@ -9,9 +9,9 @@ require "../includes/header.php"
 <title>QuestForGreen - Home</title>
 <body>
 <header>
-    <h1 class="font-Aclonica"> QuestForGreen </h1>
+    <h1 style="color: #275410; font-weight: bold; letter-spacing: 6px;" class="font-Aclonica"> QuestForGreen </h1>
 </header>
-<div class="profile-content" style="background: linear-gradient(90deg, rgba(79, 174, 153, 1) 0%, rgba(186, 231, 203, 1) 100%);">
+<div class="profile-content" style="height: 100%; background: linear-gradient(90deg, rgba(79, 174, 153, 1) 0%, rgba(186, 231, 203, 1) 100%);">
     <div id="UImenuTop" >
         <div id="block1">
             <div id="userImg" class="d-flex justify-content-center align-items-center">
@@ -26,16 +26,16 @@ require "../includes/header.php"
         </div>
         <div id="block2" class="d-flex">
             <h4 class="lvl">LVL -</h4>
-<!--            <div onclick="retour()" id="power">-->
+<!--            <div onclick="retour()" id="icon-back">-->
 <!--                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-power" fill="currentColor" xmlns="http://www.w3.org/2000/svg%22%3E">-->
 <!--                                            <path fill-rule="evenodd" d="M5.578 4.437a5 5 0 1 0 4.922.044l.5-.866a6 6 0 1 1-5.908-.053l.486.875z"/>-->
 <!--                                            <path fill-rule="evenodd" d="M7.5 8V1h1v7h-1z"/>-->
 <!--                                        </svg>-->
 <!--            </div>-->
 
-            <div class="progress">
+            <div class="progress-profile">
 
-                <div id="blockXp">
+                <div id="blockXp-profile">
                     <label id="xp">5</label>/<label id="axp">100</label>xp
                 </div>
                 <div class="progress-bar" role="progressbar" style="width: 5%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -62,8 +62,8 @@ require "../includes/header.php"
         </div>
 
     </div>
-    <div id="block3" class="white-background">
-        <div id="blockPoints">
+    <div class="white-background block3">
+        <div class="blockPoints">
             <label id="points">Points : ----- pts</label>
         </div>
     </div>
