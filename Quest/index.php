@@ -5,7 +5,7 @@
         require "../includes/BDDConnection.php";
          require "../Profile/function_profile.php";
 
-        $requete = $bdd->prepare("SELECT quetes.id_quetes,id_quetes_utilisateur,nom_quetes,description_quetes,amount_done_utilisateur,amount_quetes,etat_quetes,periode_quetes FROM quetes,quetes_utilisateur WHERE quetes.id_quetes = quetes_utilisateur.id_quetes AND quetes_utilisateur.id_utilisateur = :id");
+        $requete = $bdd->prepare("SELECT quetes.id_quetes,id_quetes_utilisateur,nom_quetes,description_quetes,amount_done_utilisateur,amount_quetes,etat_quetes_utilisateur,periode_quetes FROM quetes,quetes_utilisateur WHERE quetes.id_quetes = quetes_utilisateur.id_quetes AND quetes_utilisateur.id_utilisateur = :id");
         $requete->bindParam(':id', $_SESSION["id"]);
         $requete->execute();
         $Quetes_Util = $requete->fetchAll();
@@ -79,7 +79,7 @@
                                     $principale = 0;
                                     foreach ($Quetes_Util as $quetes) {
                                         if ($quetes["periode_quetes"] == "Principale") {
-                                            if ($quetes["etat_quetes"] == 0) {
+                                            if ($quetes["etat_quetes_utilisateur"] == 0) {
                                                 $principale++;
                                                 writeQuest($quetes);
                                                 $pdq = false;
@@ -102,7 +102,7 @@
                                     $journaliere = 0;
                                     foreach ($Quetes_Util as $quetes) {
                                         if ($quetes["periode_quetes"] == "Journaliere") {
-                                            if ($quetes["etat_quetes"] == 0) {
+                                            if ($quetes["etat_quetes_utilisateur"] == 0) {
                                                 $journaliere++;
                                                 writeQuest($quetes);
                                                 $pdq = false;
@@ -131,7 +131,7 @@
                             $hebdo = 0;
                             foreach ($Quetes_Util as $quetes) {
                                 if ($quetes["periode_quetes"] == "Hebdomadaire") {
-                                    if ($quetes["etat_quetes"] == 0) {
+                                    if ($quetes["etat_quetes_utilisateur"] == 0) {
                                         $hebdo++;
                                         writeQuest($quetes);
                                         $pdq = false;
@@ -158,7 +158,7 @@
                             $Mensu = 0;
                             foreach ($Quetes_Util as $quetes) {
                                 if ($quetes["periode_quetes"] == "Mensuel") {
-                                    if ($quetes["etat_quetes"] == 0) {
+                                    if ($quetes["etat_quetes_utilisateur"] == 0) {
                                         $Mensu++;
                                         writeQuest($quetes);
                                         $pdq = false;
@@ -401,8 +401,6 @@
                                     document.querySelector("#page4 div").setAttribute("hidden","");
                                     document.querySelector("#page4 h4").setAttribute("hidden","");
                                     document.querySelector("#page4 table").setAttribute("hidden","");
-
-
                                 }
                                 if (deg2 > -90 ) { 
                                     document.querySelector("#blockpage4").style.zIndex = "0";

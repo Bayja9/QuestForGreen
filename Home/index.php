@@ -12,7 +12,7 @@
                     </script>
                 <?php
             }
-            $requete = $bdd->prepare("SELECT nom_quetes,amount_quetes,amount_done_utilisateur FROM quetes,quetes_utilisateur WHERE quetes_utilisateur.id_quetes = quetes.id_quetes AND periode_quetes = \"Principale\" AND quetes_utilisateur.id_utilisateur = :id AND quetes_utilisateur.etat_quetes = 0");
+            $requete = $bdd->prepare("SELECT nom_quetes,amount_quetes,amount_done_utilisateur FROM quetes,quetes_utilisateur WHERE quetes_utilisateur.id_quetes = quetes.id_quetes AND periode_quetes = \"Principale\" AND quetes_utilisateur.id_utilisateur = :id AND quetes_utilisateur.etat_quetes_utilisateur = 0");
             $requete->bindParam(':id', $_SESSION["id"]);
             $requete->execute();
             $result = $requete->fetch();

@@ -12,7 +12,7 @@ $requete->bindParam(':idQuetes', $_GET["idQuetes"]);
 
 $requete->execute();
 
-$requete = $bdd->prepare("UPDATE `quetes_utilisateur` SET `etat_quetes` = '1' WHERE `quetes_utilisateur`.`id_quetes_utilisateur` = :idQuetes");
+$requete = $bdd->prepare("UPDATE `quetes_utilisateur` SET `etat_quetes_utilisateur` = '1' WHERE `quetes_utilisateur`.`id_quetes` = :idQuetes");
 $requete->bindParam(':idQuetes', $_GET["idQuetes"]);
 $requete->execute();
 
