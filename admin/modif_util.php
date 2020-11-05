@@ -5,6 +5,13 @@
             require "../includes/header.php" ;
             require "../class/class_utilisateur.php"; 
         ?>
+        <style>
+        body {
+    color:black;
+    background-color:white;
+    background-image:url(../resources/img/fond_admin.jpg);
+    }
+    </style>
     </head>
     <body>
         <!--========================================
@@ -12,6 +19,7 @@
         =========================================-->
         <div class="container">
         <a href="utilisateurs_admin.php"><button name="retour" class="btn btn-primary">Retour</button></a>
+        <div class="p-3 mb-2 bg-dark text-white">
             <?php
                 $id_util=$_POST['idutil'];
                 $o=new utilisateur((integer)$id_util,"","","","","","","","","");

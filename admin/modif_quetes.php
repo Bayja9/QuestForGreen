@@ -7,6 +7,13 @@
             $typequete=new typequete("","");
             $req2 = $typequete->afftypequete($bdd);
         ?>
+        <style>
+        body {
+    color:black;
+    background-color:white;
+    background-image:url(../resources/img/fond_admin.jpg);
+    }
+    </style>
     </head>
     <body>
         <!--==================================
@@ -14,6 +21,7 @@
         ===================================-->
         <div class="container">
         <a href="quetes_admin.php"><button name="retour" class="btn btn-primary">Retour</button></a>
+        <div class="p-3 mb-2 bg-dark text-white">
             <?php
                 $id_quetes=$_POST['id_quetes'];
                 $o=new quetes((integer)$id_quetes,"","","","","","","","","","");

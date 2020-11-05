@@ -5,6 +5,13 @@
             require "../includes/header.php" ;
             require "../class/class_badge.php"; 
         ?>
+        <style>
+        body {
+    color:black;
+    background-color:white;
+    background-image:url(../resources/img/fond_admin.jpg);
+    }
+    </style>
     </head>
     <body>
         <!--========================================
@@ -12,6 +19,7 @@
         =========================================-->
         <div class="container">
         <a href="badges_admin.php"><button name="retour" class="btn btn-primary">Retour</button></a>
+        <div class="p-3 mb-2 bg-dark text-white">
             <?php
                 $id_badge=$_POST['idbadge'];
                 $o=new badge((integer)$id_badge,"","","","","");

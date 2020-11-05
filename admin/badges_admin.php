@@ -6,6 +6,13 @@
             require "../includes/header.php" ;
             require "../class/class_badge.php";
         ?>
+        <style>
+        body {
+    color:black;
+    background-color:white;
+    background-image:url(../resources/img/fond_admin.jpg);
+    }
+    </style>
     </head>
     <body>
         <!--====================================
@@ -17,7 +24,7 @@
                 <div class="float-md-right"><a href="ajout_badge.php"><button name="retour" class="btn btn-primary">Ajouter</button></a></div>
 
         <div class="table-responsive">
-        <table class="table">
+        <table class="table table-dark">
             <thead>
                 <tr>
                 <th scope="col">Nom Badge</th>
