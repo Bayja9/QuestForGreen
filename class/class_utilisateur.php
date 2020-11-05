@@ -20,6 +20,7 @@ class utilisateur
 		Private $mail_utilisateur;
 		Private $niv_util;
 		Private $nom_image;
+		Private $suivi_quete_principale;
         Private $etat_utilisateur;
 
 
@@ -28,7 +29,7 @@ class utilisateur
 		/* class utilisateur Constructeur */
 		/* ---------------------- */
 
-			Public function __construct($id_util, $user_util, $pass_util, $xp_util, $pts_util, $mail_util, $niv_util , $n_img, $etat_util)
+			Public function __construct($id_util, $user_util, $pass_util, $xp_util, $pts_util, $mail_util, $niv_util , $n_img, $suivi, $etat_util)
 			{
 
 				$this->id_utilisateur = $id_util;
@@ -39,6 +40,7 @@ class utilisateur
 				$this->mail_utilisateur = $mail_util;
 				$this->niv_util = $niv_util;
 				$this->nom_image = $n_img;
+				$this->suivi_quete_principale = $suivi;
                 $this->etat_utilisateur = $etat_util;
 
 			}
@@ -57,6 +59,7 @@ class utilisateur
 				$data = $data.$this->mail_utilisateur;
 				$data = $data.$this->niv_util;
 				$data = $data.$this->nom_image;
+				$data = $data.$this->suivi_quete_principale;
 				$data = $data.$this->etat_utilisateur;
 
 				return $data;
@@ -104,6 +107,11 @@ class utilisateur
 			Public function get_nom_image ()
             {
                 return $this->nom_image;
+			}
+			
+			Public function get_suivi_quete_principale ()
+            {
+                return $this->suivi_quete;
             }
 
 
