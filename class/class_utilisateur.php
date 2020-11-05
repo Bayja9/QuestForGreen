@@ -164,6 +164,11 @@ class utilisateur
 				$this->nom_image = $n_img;
 			}
 
+			Public function set_suivi_quete_principale ($suivi)
+			{
+				$this->suivi_quete_principale = $suivi;
+			}			
+
 			Public function set_etat_utilisateur ($etat_utilisateur)
 			{
 				 $this->etat_utilisateur = $etat_utilisateur;
@@ -201,11 +206,12 @@ class utilisateur
 					$mail_util = $objet->get_mail_utilisateur();
 					$niv = $objet->get_niv();
 					$n_img = $objet->get_nom_image();
+					$suivi = $objet->get_suivi_quete_principale();
 					$etat_util= $objet->get_etat_utilisateur();
 
 				
 					$SQL = "UPDATE utilisateur SET id_utilisateur = '$id_util', username_utilisateur  = '$user_util',
-          			xp_utilisateur = '$xp_util', points_utilisateur = '$pts_util', mail_utilisateur = '$mail_util', niv = '$niv', nom_image = '$n_img', etat_utilisateur  = '$etat_util'
+          			xp_utilisateur = '$xp_util', points_utilisateur = '$pts_util', mail_utilisateur = '$mail_util', niv = '$niv', nom_image = '$n_img', suivi_quetes_principale = '$suivi', etat_utilisateur  = '$etat_util'
 					WHERE id_utilisateur = '$id_util'";
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur modification utilisateur ');
 				}
