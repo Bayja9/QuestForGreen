@@ -16,7 +16,7 @@
                 <div class="float-md-left"><a href="admin_panel.php"><button name="retour" class="btn btn-primary">Retour</button></a></div>
                 <div class="float-md-right"><a href="ajout_badge.php"><button name="retour" class="btn btn-primary">Ajouter</button></a></div>
 
-
+        <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
@@ -61,6 +61,7 @@
             </tbody>
             
         </table>
+        </div>
         </div>
 
       

@@ -16,7 +16,7 @@
                 <div class="float-md-left"><a href="admin_panel.php"><button name="retour" class="btn btn-primary">Retour</button></a></div>
                 
 
-
+        <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
@@ -67,6 +67,7 @@
             </tbody>
             
         </table>
+        </div>
         </div>
 
       

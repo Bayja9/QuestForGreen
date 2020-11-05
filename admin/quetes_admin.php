@@ -17,7 +17,7 @@
                 <div class="float-md-right"><a href="ajout_quetes.php"><button name="ajouter" class="btn btn-primary">Ajouter</button></a></div>
                 
 
-
+        <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
@@ -81,6 +81,7 @@
             </tbody>
             
         </table>
+        </div>
         </div>
 
       

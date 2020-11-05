@@ -28,7 +28,7 @@
             <input name="date_fin_quetes" type="hidden" class="form-control" id="exampleInputEmail1">
         </div>
         <div class="form-group">
-            <label>difficulte</label>
+            <label>Difficulté</label>
             <input name="difficulte_quetes" type="number" class="form-control" id="exampleInputEmail1">
         </div>
         <div class="form-group">
@@ -44,7 +44,7 @@
                       </select>
         </div>
         <div class="form-group">
-            <label>Amount</label>
+            <label>Progression</label>
             <input name="amount_quetes" type="number" class="form-control" id="exampleInputEmail1">
         </div>
         
