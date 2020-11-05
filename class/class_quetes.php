@@ -113,10 +113,10 @@ class quetes
                 return $this->etat_quetes;
             }
 
-            //Public function get_type_quetes ()
-            //{
-            //    return $this->id_type_quetes;
-            //}
+            Public function get_type_quetes ()
+            {
+                return $this->id_type_quetes;
+            }
 
 			/* ---------------------- */
 			/* class quetes SET */
@@ -180,11 +180,28 @@ class quetes
 					$dif_que = $objet->get_difficulte_quetes();
 					$period_que = $objet->get_periode_quetes();
                     $amount_que = $objet->get_amount_quetes();
-					//$typequete= $objet->get_type_quetes();
+					$typequete= $objet->get_type_quetes();
 
+					if ($period_que == 'principale')
+					{
+						$id_type_que = 1;
+					}
+					if ($period_que == 'journaliere')
+					{
+						$id_type_que = 2;
+					}
+					if ($period_que == 'hebdomadaire')
+					{
+						$id_type_que = 3;
+					}
+					if ($period_que == 'mensuelle')
+					{
+						$id_type_que = 4;
+					}
 
-					print $SQL = " INSERT INTO quetes (nom_quetes, description_quetes, date_fin_quetes, difficulte_quetes, periode_quetes, amount_quetes, etat_quetes, id_type_quetes ) values ('$n_que', '$desc_que', '$date_fin_que', '$dif_que', '$period_que', '$amount_que', '0', '0')";
-					$Req = $bdd -> query ($SQL) or die (' Erreur ajout quetes ');
+					$SQL = " INSERT INTO quetes (id_quetes, nom_quetes, description_quetes, date_fin_quetes, difficulte_quetes, periode_quetes, amount_quetes, etat_quetes, id_type_quetes ) values ('NULL', '$n_que', '$desc_que', '$date_fin_que', '$dif_que', '$period_que', '$amount_que', '0', '$id_type_que')";
+					$Req = $bdd -> query ($SQL) or die (' Erreur ajout quete ');
+					
 				}
 
 				Public function modif_quetes ($objet, $bdd)
@@ -197,10 +214,27 @@ class quetes
 					$period_que = $objet->get_periode_quetes();
                     $amount_que = $objet->get_amount_quetes();
                     $etat_que = $objet->get_etat_quetes();
-					//$typequete= $objet->get_type_quetes();
+					$typequete= $objet->get_type_quetes();
+					
+					if ($period_que == 'principale')
+					{
+						$id_type_que = 1;
+					}
+					if ($period_que == 'journaliere')
+					{
+						$id_type_que = 2;
+					}
+					if ($period_que == 'hebdomadaire')
+					{
+						$id_type_que = 3;
+					}
+					if ($period_que == 'mensuelle')
+					{
+						$id_type_que = 4;
+					}
 				
 					print $SQL = "UPDATE quetes SET id_quetes = '$id_que', nom_quetes  = '$n_que', description_quetes = '$desc_que',
-          			date_fin_quetes = '$date_fin_que', difficulte_quetes = '$dif_que', periode_quetes = '$period_que', amount_quetes = '$amount_que', etat_quetes = '$etat_que'
+          			date_fin_quetes = '$date_fin_que', difficulte_quetes = '$dif_que', periode_quetes = '$period_que', amount_quetes = '$amount_que', etat_quetes = '$etat_que', id_type_quetes = '$id_type_que',
 					WHERE id_quetes = '$id_que'";
 				 	$Req = $bdd -> query ($SQL) or die (' Erreur modification quetes ');
 				}

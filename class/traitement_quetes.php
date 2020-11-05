@@ -17,7 +17,7 @@ if (isset($_POST['enregistrerq']))
 
     $unquetes = new quetes('', $nom_que, $desc_que, $date_fin_que, $dif_que, $period_que, $amont_que,'','','','');
     $unquetes-> ajout_quetes($unquetes, $bdd);
-    header('Location: ./inscription_quetes.php');
+    header('Location: ../admin/quetes_admin.php');
 
 }
 if (isset($_POST['modifierq']))
@@ -33,7 +33,6 @@ if (isset($_POST['modifierq']))
 
     $unquetes = new quetes ($id_que, $nom_que, $desc_que, $dif_que, $period_que, $amont_que, $etat_que,"","","","");
     $unquetes-> modif_quetes($unquetes, $bdd);
-    //$_SESSION['id_quetes']='';
     header('Location: ../admin/quetes_admin.php');
 
 }
@@ -41,7 +40,7 @@ if (isset($_POST['supprq']))
 {
 
     $id_quetes=$_POST['id_quetes'];
-    $unquetes = new quetes((integer)$id_quetes,'','','','','','');
+    $unquetes = new quetes((integer)$id_quetes,'','','','','','','','','','');
     $u = $unquetes -> suppr_quetes($unquetes, $bdd);
     //header('Location: ../admin/quetess_admin.php');
     
