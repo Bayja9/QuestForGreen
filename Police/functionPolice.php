@@ -61,7 +61,7 @@
         {
             echo '<div style="margin-top:200px;" class="row">
                         <div style="margin:auto;" align="center" class="col-12">
-                            <h4>Il n\'y a plus de quêtes à valider pour le moment... Ou vous avez déjà traité 5 quêtes aujourd\'hui. Revenez demain !</h4>
+                            <h4>Il n\'y a plus de quête à valider pour le moment... Ou vous avez déjà traité 5 quêtes aujourd\'hui. Revenez demain !</h4>
                             <img src="../resources/img/Flora.png">
                         </div>
                                 
