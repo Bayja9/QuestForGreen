@@ -88,11 +88,25 @@ function initPageProfile() {
 }
 
 function showFormEditUsername() {
-    document.getElementById("showFormEditUsername").style.display = "block";
+    document.getElementById("showFormEditUsername").style.display = "flex";
     document.getElementById("showButtonEditUsername").style.display = "none";
 }
 
 function showFormEditEmail() {
-    document.getElementById("showFormEditEmail").style.display = "block";
+    document.getElementById("showFormEditEmail").style.display = "flex";
     document.getElementById("showButtonEditEmail").style.display = "none";
 }
+
+function hideFormEditUsername(){
+    document.getElementById("showFormEditUsername").style.display = "none";
+    document.getElementById("showButtonEditUsername").style.display = "flex";
+}
+
+function hideFormEditEmail() {
+    document.getElementById("showFormEditEmail").style.display = "none";
+    document.getElementById("showButtonEditEmail").style.display = "flex";
+}
+var loadFile = function() {
+    var image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+};
