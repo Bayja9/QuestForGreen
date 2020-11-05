@@ -2,7 +2,7 @@
     function getQuestsToValidate()
     {
         require "../includes/BDDConnection.php";
-        $requete = $bdd->prepare("SELECT id_validation_quetes,nom_image_quetes,description_image_quetes,date_fin_quetes,etat_quetes,validation_quetes.id_utilisateur,validation_quetes.id_quetes 
+        $requete = $bdd->prepare("SELECT id_validation_quetes,nom_image_quetes,description_image_quetes,date_fin_quetes,quetes_utilisateur.etat_quetes,validation_quetes.id_utilisateur,validation_quetes.id_quetes 
                                 from validation_quetes
                                 INNER JOIN quetes_utilisateur ON validation_quetes.id_quetes = quetes_utilisateur.id_quetes
                                 WHERE validation_amount > -5

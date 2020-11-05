@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html style="height: 100%">
 <?php
-require "../includes/header.php"
+            require "../includes/header.php";
+            $requete = $bdd->prepare("SELECT * FROM utilisateur WHERE id_utilisateur = :id");
+            $requete->bindParam(':id', $_SESSION["id"]);
+            $requete->execute();
+            $result = $requete->fetch();
 ?>
 <?php require "function_profile.php" ?>
 <LINK rel="stylesheet" href="../resources/css/home.css"/>
@@ -25,7 +29,7 @@ require "../includes/header.php"
             </div>
         </div>
         <div id="block2" class="d-flex">
-            <h4 class="lvl">LVL -</h4>
+            <h4 class="lvl">LVL <?php echo $result["niv"] ?></h4>
 <!--            <div onclick="retour()" id="icon-back">-->
 <!--                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-power" fill="currentColor" xmlns="http://www.w3.org/2000/svg%22%3E">-->
 <!--                                            <path fill-rule="evenodd" d="M5.578 4.437a5 5 0 1 0 4.922.044l.5-.866a6 6 0 1 1-5.908-.053l.486.875z"/>-->
@@ -34,11 +38,10 @@ require "../includes/header.php"
 <!--            </div>-->
 
             <div class="progress-profile">
-
                 <div id="blockXp-profile">
-                    <label id="xp">5</label>/<label id="axp">100</label>xp
+                    <label id="xp"><?php echo $_SESSION["xp"] ?></label>/<label id="axp">100</label>xp
                 </div>
-                <div class="progress-bar" role="progressbar" style="width: 5%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: <?php echo $_SESSION["xp"] ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
 
@@ -64,7 +67,7 @@ require "../includes/header.php"
     </div>
     <div class="block3" style="min-width: 30%; text-align: center; max-width: 1110px;">
         <div class="blockPoints white-background">
-            <label id="points">Points : ----- pts</label>
+            <label id="points">Points : <?php echo $_SESSION["point"] ?> pts</label>
         </div>
     </div>
 
@@ -152,11 +155,6 @@ require "../includes/header.php"
                 </tr>
                 </thead>
                 <tbody class="text-center r-vertical">
-                <tr>
-                    <th class="r-vertical">Barbapapa</th>
-                    <th class="r-vertical">03/07/1990</th>
-                    <th class="r-vertical">4</th>
-                </tr>
                 <?php getQuestsValidate(); ?>
                 </tbody>
             </table>

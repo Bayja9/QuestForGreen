@@ -124,6 +124,9 @@ header{
     border-radius: 15px;
     margin: 0 25px;
     background: #FFF;
+    z-index: 0;
+    display: flex;
+    overflow: hidden;
 }
 
 .progress {
@@ -165,7 +168,8 @@ header{
     font-weight: bold;
     position: absolute;
     bottom: -5px;
-    left: 41%;
+    left: 50%;
+    transform: translate(-50%);
     z-index: 1;
 }
 #username {

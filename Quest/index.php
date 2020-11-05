@@ -15,7 +15,7 @@
                 echo "<div class=\"done\" onclick=\"validate(this)\">";
             }
 
-            echo "<label id=\"questTitle\" data-questTitle=".$iquetes["nom_quetes"]." data-userQuestID=".$iquetes["id_quetes_utilisateur"].">".$iquetes["nom_quetes"]."</label>
+            echo "<label id=\"questTitle\" data-questTitle=".$iquetes["nom_quetes"]." data-idQuest=".$iquetes["id_quetes"].">".$iquetes["nom_quetes"]."</label>
                     <br>
                     <label id=\"questInfo\">".$iquetes["description_quetes"]."</label>";
 
@@ -77,7 +77,7 @@
                                 if ($Quetes_Util) {
                                     $principale = 0;
                                     foreach ($Quetes_Util as $quetes) {
-                                        if ($quetes["periode_quetes"] == "Principal") {
+                                        if ($quetes["periode_quetes"] == "Principale") {
                                             if ($quetes["etat_quetes"] == 0) {
                                                 $principale++;
                                                 writeQuest($quetes);
@@ -111,7 +111,8 @@
                                         break;
                                         }
                                     }
-                                }else {
+                                }
+                                if($pdq) {
                                     echo "<label id=\"noquest\"> Il n'y a pas de quete Journalière pour vous</label>";
                                 }
                                 ?>
@@ -139,7 +140,8 @@
                                 break;
                                 }
                             }
-                        }else {
+                        }
+                        if($pdq) {
                             echo "<label id=\"noquest\"> Il n'y a pas de quete Hebdomadaire pour vous</label>";
                         }
                     ?>
@@ -165,7 +167,8 @@
                                 break;
                                 }
                             }
-                        }else {
+                        }
+                        if($pdq) {
                             echo "<label id=\"noquest\"> Il n'y a pas de quete Mensuel pour vous</label>";
                         }
                     ?>
@@ -341,9 +344,9 @@
             var questid;
             var questTitle;
             function validate(elm) {
-                questid = elm.firstChild.getAttribute("data-userQuestID");
+                questid = elm.firstChild.getAttribute("data-idQuest");
                 questTitle = elm.firstChild.innerHTML; 
-                document.querySelector("#preview").setAttribute("data-userQuestID",questid)
+                document.querySelector("#preview").setAttribute("data-idQuest",questid)
                 document.querySelector("#h2quest").innerHTML = questTitle;
                 document.querySelector("#desctext").value = "";
 
@@ -462,7 +465,7 @@
                 img = document.querySelector("#image");
                 text = document.querySelector("#desctext");
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET", "validateQuest.php?nomIMG="+img.files[0].name+"&descIMG="+text.value+"&idUtil="+<?php echo $_SESSION["id"]?>+"&idQuetesUtil="+prev.getAttribute("data-userquestid"), true);
+                xmlhttp.open("GET", "validateQuest.php?nomIMG="+img.files[0].name+"&descIMG="+text.value+"&idUtil="+<?php echo $_SESSION["id"]?>+"&idQuetes="+prev.getAttribute("data-idQuest"), true);
                 xmlhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         // document.querySelector("#valider").innerHTML = this.responseText
