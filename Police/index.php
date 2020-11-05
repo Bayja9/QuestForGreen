@@ -28,7 +28,7 @@
             <div id="block2">
                 <div id="block3">
                     <div id="blockPoints">
-                    <label id="points">Points : ----- pts</label>
+                    <label id="points">Points : <?php echo $_SESSION["point"] ?> pts</label>
                     </div>
                     <div id="Slots">
                         <div id="profil" onclick="profile()">
@@ -61,9 +61,9 @@
                 
                 <div class="progress" >
                     <div id="blockXp">
-                        <label id="xp">5</label>/<label id="axp">100</label>xp
+                        <label id="xp"><?php echo $_SESSION["xp"] ?></label>/<label id="axp">100</label>xp
                     </div>
-                    <div class="progress-bar" role="progressbar" style="width: 5%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" role="progressbar" style="width: <?php echo $_SESSION["xp"]/100*100 ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
             
