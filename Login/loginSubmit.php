@@ -40,6 +40,7 @@
                         $_SESSION['xp'] = $data['xp_utilisateur'];
                         $_SESSION['point'] = $data['points_utilisateur'];
                         $_SESSION['niv'] = $data['niv'];
+                        $_SESSION['img'] = $data['nom_image'];
 
                         echo'<div class="alert alert-success">Authentification Réussi</div>';
                     }
