@@ -1,11 +1,10 @@
         
         <?php
+            session_start();
+            require "../includes/BDDConnection.php";
         /*======================================================/
         /             Traitement de la connexion                /
         /======================================================*/
-            session_start();
-            require "../includes/BDDConnection.php";
-
             if(isset($_GET["login"]))
             {
                 //Recupération des valeurs du formuaire dans des variables
