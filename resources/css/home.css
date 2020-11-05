@@ -61,12 +61,13 @@ header{
 #userImg {
     width: 195px;
     height: 195px;
-    background: #ffffff;
+    background: transparent;
     border: 5px solid rgba(79,174,153,1);
     border-radius: 100%;
     position: relative;
     top: -100px;
     left: 30px;
+    overflow: hidden; 
 }
 
 #block1 {
@@ -342,4 +343,21 @@ header{
 }
 .border-fullrounded.white-background.d-flex.justify-content-center{
     padding:10px;
+}
+.btn.btn-file.btn-dark {
+    position: relative;
+    left: unset;
+    right: unset;
+    bottom: unset;
+}
+
+form.d-flex {
+    justify-content: center;
+    display: flex;
+    width: 111px;
+}
+
+#file {
+    width: 1px;
+    height: 1px;
 }
