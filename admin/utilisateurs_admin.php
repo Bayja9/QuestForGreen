@@ -34,7 +34,7 @@
             <tbody>
             <?php
                 //roles = admin, member, user
-                $o=new utilisateur("","","","","","","","","");
+                $o=new utilisateur("","","","","","","","","","");
                 $req=$o->tslesutilisateurs($bdd);
                 foreach($req as $unutilisateur){
                 $id_util=$unutilisateur['id_utilisateur'];
