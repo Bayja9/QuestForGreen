@@ -1,6 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <?php require "../includes/header.php" ?>
+    <?php 
+        require "../includes/header.php";
+        require "../includes/BDDConnection.php";
+
+        $requete = $bdd->prepare("SELECT quetes.id_quetes,id_quetes_utilisateur,nom_quetes,description_quetes,amount_done_utilisateur,amount_quetes,etat_quetes,periode_quetes FROM quetes,quetes_utilisateur WHERE quetes.id_quetes = quetes_utilisateur.id_quetes AND quetes_utilisateur.id_utilisateur = :id");
+        $requete->bindParam(':id', $_SESSION["id"]);
+        $requete->execute();
+        $Quetes_Util = $requete->fetchAll();
+
+        function writeQuest($iquetes)
+        {
+            if ($iquetes["amount_done_utilisateur"] == $iquetes["amount_quetes"]) {
+                echo "<div class=\"done\" onclick=\"validate(this)\">";
+            }
+
+            echo "<label id=\"questTitle\" data-questTitle=".$iquetes["nom_quetes"]." data-userQuestID=".$iquetes["id_quetes_utilisateur"].">".$iquetes["nom_quetes"]."</label>
+                    <br>
+                    <label id=\"questInfo\">".$iquetes["description_quetes"]."</label>";
+
+            if ($iquetes["amount_done_utilisateur"] != $iquetes["amount_quetes"]){
+                echo "<i class=\"plus fas fa-plus\" data-utilisateur=".$_SESSION["id"]." data-questID=".$iquetes["id_quetes"]." data-newAmount=".$iquetes["amount_done_utilisateur"]." data-amountDone=".$iquetes["amount_done_utilisateur"]." data-amount=".$iquetes["amount_quetes"]." onclick=\"add(this)\"></i>";
+            }
+            echo "<label id=\"questValue\">".$iquetes["amount_done_utilisateur"]."/".$iquetes["amount_quetes"]."</label>";
+            if ($iquetes["amount_done_utilisateur"] != $iquetes["amount_quetes"]){
+                echo "<i class=\"moin fas fa-minus\" onclick=\"supp(this)\"></i>";
+            }
+
+            if ($iquetes["amount_done_utilisateur"] == $iquetes["amount_quetes"]){
+                echo "</div>";
+            }
+        }
+    ?>
     <LINK rel="stylesheet" href="../resources/css/quest.css"/>
     <title>QuestForGreen - Quest</title>
     <body>
@@ -41,12 +72,49 @@
                                 <div id="ligne"></div>
                                 <h4>Principales</h4>
                                 <!-- mettre ici la quetes principales -->
-                                <label id="questTitle">Recycler un stylo</label>
-                                <br>
-                                <label id="questInfo">Tu dois forcement avoir un stylo usé chez toi ! Si oui, ne le jette pas ! Je suis sûr qu'il peux avoir une autre utilité ! ;)</label>
-                                <label id="questValue">0/1</label>
+                                <?php
+                                $pdq = true;
+                                if ($Quetes_Util) {
+                                    $principale = 0;
+                                    foreach ($Quetes_Util as $quetes) {
+                                        if ($quetes["periode_quetes"] == "Principal") {
+                                            if ($quetes["etat_quetes"] == 0) {
+                                                $principale++;
+                                                writeQuest($quetes);
+                                                $pdq = false;
+                                            }
+                                        }
+                                        if ($principale == 1) {
+                                        break;
+                                        }
+                                    }
+                                }
+                                if($pdq){
+                                    echo "<label id=\"noquest\"> Il n'y a pas de quete Principales pour vous</label>";
+                                }
+                                ?>
                                 <div id="ligne"></div>
                                 <h4>Journalière</h4>
+                                <?php
+                                $pdq = true;
+                                if ($Quetes_Util) {
+                                    $journaliere = 0;
+                                    foreach ($Quetes_Util as $quetes) {
+                                        if ($quetes["periode_quetes"] == "Journaliere") {
+                                            if ($quetes["etat_quetes"] == 0) {
+                                                $journaliere++;
+                                                writeQuest($quetes);
+                                                $pdq = false;
+                                            }
+                                        }
+                                        if ($journaliere == 5) {
+                                        break;
+                                        }
+                                    }
+                                }else {
+                                    echo "<label id=\"noquest\"> Il n'y a pas de quete Journalière pour vous</label>";
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -54,13 +122,53 @@
                 <div id="blockpage2" class="blockpage" >
                     <div id="page2" class="page" onmousedown="turnPageON(event)">
                     <div id="ligne"></div>
-                    <h4>Hebdommadaire</h4>
+                    <h4>Hebdomadaire</h4>
+                    <?php
+                        $pdq = true;
+                        if ($Quetes_Util) {
+                            $hebdo = 0;
+                            foreach ($Quetes_Util as $quetes) {
+                                if ($quetes["periode_quetes"] == "Hebdomadaire") {
+                                    if ($quetes["etat_quetes"] == 0) {
+                                        $hebdo++;
+                                        writeQuest($quetes);
+                                        $pdq = false;
+                                    }
+                                }
+                                if ($hebdo == 7) {
+                                break;
+                                }
+                            }
+                        }else {
+                            echo "<label id=\"noquest\"> Il n'y a pas de quete Hebdomadaire pour vous</label>";
+                        }
+                    ?>
                     </div>
                 </div>
                 <div id="blockpage3" class="blockpage">
                     <div id="page3" class="page" onmousedown="turnPageON(event)">
                     <div id="ligne"></div>
                     <h4>Mensuel</h4>
+                    <?php
+                        $pdq = true;
+                        if ($Quetes_Util) {
+                            $Mensu = 0;
+                            foreach ($Quetes_Util as $quetes) {
+                                if ($quetes["periode_quetes"] == "Mensuel") {
+                                    if ($quetes["etat_quetes"] == 0) {
+                                        $Mensu++;
+                                        writeQuest($quetes);
+                                        $pdq = false;
+                                    }
+                                }
+                                if ($Mensu == 4) {
+                                break;
+                                }
+                            }
+                        }else {
+                            echo "<label id=\"noquest\"> Il n'y a pas de quete Mensuel pour vous</label>";
+                        }
+                    ?>
                     </div>
                 </div>
                 <div id="blockpage4" class="blockpage">
@@ -69,24 +177,49 @@
                     <h4>Accomplies</h4>
                     </div>
                 </div>
-                
+                <div id="formQuete" class="blockpage">
+                    <div id="ligne"></div>
+                    <h2 id="h2quest"></h2>
+                    <div id="uploadIMG">
+                        <input id="image" type="file" name="image_valid_quete" accept="image/*">
+                        <label id="imgLabel" for="image"><span>Choisissez une image</span></label>
+                        <img id="preview" src="//via.placeholder.com/300x300">
+                    </div>
+                    <textarea id="desctext" type="text" name="description_quete" maxlength = "512" placeholder="Entrez une description de ce que vous avez accompli ..."></textarea>
+                    <button id="annuler" onclick="annuler()">Annuler</button>
+                    <button id="valider" onclick="validateQuest()">Valider</button>
+                </div>
             </div>
         </div>
         </div>
+        <button id="confirmer" onclick="confirme()" hidden > Confirmer les changements </button>
         <?php require "../includes/import-js.php" ?>
         <script>
+            $(document).ready(function (e) {
+                $('input[type="file"]').on('change', (e) => {
+                    let that = e.currentTarget
+                    if (that.files && that.files[0]) {
+                        $(that).next('.custom-file-label').html(that.files[0].name)
+                        let reader = new FileReader()
+                        reader.onload = (e) => {
+                            $('#preview').attr('src', e.target.result)
+                        }
+                        reader.readAsDataURL(that.files[0])
+                    }
+                })
+            });
             function back(){
                 document.location.href = "/QuestForGreen/Home";
             };
             var deg = 0;
             var pos = 0;
             var lastpos = 0;
-
+            var moving = false;
             var mouse = false;
             document.addEventListener('mousemove', (event) => {
                 lastpos = pos;
                 pos = event.clientX;
-                if (mouse == true) {
+                if (mouse == true && moving == false) {
                     if (window.getSelection) {
                         if (window.getSelection().empty) {  // Chrome
                             window.getSelection().empty();
@@ -127,20 +260,218 @@
             resetpage()
             function resetpage() {
                 setTimeout(() => {
-                if (mouse == false) {
-                    if (deg < -90 && deg > -180) {
+                if (mouse == false && moving == false) {
+                    if (deg <= -90 && deg > -180) {
                         deg-=0.3;
                         document.querySelector("#blockpage2").style.transform = "rotateY("+deg+"deg)";
                         document.querySelector("#blockpage3").style.transform = "rotateY("+deg+"deg)";
+                        document.querySelector("#blockpage3").style.zIndex = "3";
                     }
                     if (deg > -90 && deg < 0) {
                         deg+=0.3;
                         document.querySelector("#blockpage2").style.transform = "rotateY("+deg+"deg)";
                         document.querySelector("#blockpage3").style.transform = "rotateY("+deg+"deg)";
+                        document.querySelector("#blockpage3").style.zIndex = "0";
                     }
                 }
                 resetpage();
             }, 1);
+            }
+
+            var confirm =  true;
+            var quest = 0;
+            //algo
+            var amount = 0;
+            var max_amount = 1; 
+            //algo
+
+            function add(elm) {
+                amount = elm.getAttribute("data-newAmount");
+                max_amount = elm.getAttribute("data-amount");
+                if (amount != max_amount) {
+                    elm.setAttribute("data-newAmount",++amount);
+                    elm.nextElementSibling.innerHTML = amount+"/"+max_amount;
+                }
+                verif();
+            }
+
+            function supp(elm) {
+                amount = elm.previousElementSibling.previousElementSibling.getAttribute("data-newAmount");
+                max_amount = elm.previousElementSibling.previousElementSibling.getAttribute("data-amount");
+                if (amount != 0) {
+                    elm.previousElementSibling.previousElementSibling.setAttribute("data-newAmount",--amount);
+                    elm.previousElementSibling.innerHTML = amount+"/"+max_amount;
+                }
+                verif();
+            }
+            var quests = 0;
+            var confirmer = false;
+
+            function verif() {
+                quests = document.querySelectorAll(".plus");
+                confirmer = false;
+                quests.forEach(plusTag => {
+                    if (plusTag.getAttribute("data-newAmount") != plusTag.getAttribute("data-amountDone")) {
+                        document.querySelector("#confirmer"). removeAttribute("hidden","");
+                        document.querySelector("#confirmer").style.opacity = "100%";
+                        confirmer = true;
+                    }
+                    if (!confirmer){
+                        document.querySelector("#confirmer").setAttribute("hidden","");
+                        document.querySelector("#confirmer").style.opacity = "0%";
+                    }
+                });
+            }
+
+            function confirme() {
+                var xmlhttp = new XMLHttpRequest();
+                quests = document.querySelectorAll(".plus");
+                quests.forEach(plusTag => {
+                    if (plusTag.getAttribute("data-newAmount") != plusTag.getAttribute("data-amountDone")){
+                        xmlhttp.open("GET", "modifQuest.php?idQuest="+plusTag.getAttribute("data-questid")+"&idUtilisateur="+plusTag.getAttribute("data-utilisateur")+"&newAmount="+plusTag.getAttribute("data-newAmount"), true);
+                        xmlhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                document.location.href="/QuestForGreen/Quest/";
+                            }
+                        }
+                        xmlhttp.send();
+                        //quests = document.querySelectorAll(".plus");
+                    }
+                });
+            }
+            var deg2 = 0;
+            var questid;
+            var questTitle;
+            function validate(elm) {
+                questid = elm.firstChild.getAttribute("data-userQuestID");
+                questTitle = elm.firstChild.innerHTML; 
+                document.querySelector("#preview").setAttribute("data-userQuestID",questid)
+                document.querySelector("#h2quest").innerHTML = questTitle;
+                document.querySelector("#desctext").value = "";
+
+                moving = true;
+                pageDeuxEtTrois();
+                function pageDeuxEtTrois(params) {
+                    setTimeout(() => {
+                        if (deg > -180) {
+                            deg-=1.5;
+                            document.querySelector("#blockpage2").style.transform = "rotateY("+deg+"deg)";
+                            document.querySelector("#blockpage3").style.transform = "rotateY("+deg+"deg)";
+                            if (deg < -90 ) { 
+                                document.querySelector("#blockpage3").style.zIndex = "3"; 
+                            }
+                            if (deg > -90 ) { 
+                                document.querySelector("#blockpage3").style.zIndex = "0"; 
+                            }
+                        }else{
+                            deg = -180;
+                            document.querySelector("#blockpage2").style.transform = "rotateY("+deg+"deg)";
+                            document.querySelector("#blockpage3").style.transform = "rotateY("+deg+"deg)";
+                            moving = false;
+                            return 0;
+                        }
+                        pageDeuxEtTrois();
+                    }, 1);
+                    
+                }
+                setTimeout(() => {
+                    pageQuatre();
+                    function pageQuatre(params) {
+                        setTimeout(() => {
+                            if (deg2 > -180) {
+                                deg2-=1.5;
+                                document.querySelector("#blockpage4").style.transform = "rotateY("+deg2+"deg)";
+                                if (deg2 < -90 ) { 
+                                    document.querySelector("#blockpage4").style.zIndex = "3";
+                                    document.querySelector("#page4 div").setAttribute("hidden","");
+                                    document.querySelector("#page4 h4").setAttribute("hidden","");
+
+                                }
+                                if (deg2 > -90 ) { 
+                                    document.querySelector("#blockpage4").style.zIndex = "0";
+                                    
+                                }
+                            }else{
+                                deg2 = -180;
+                                document.querySelector("#blockpage4").style.transform = "rotateY("+deg2+"deg)";
+                                moving = false;
+                                return 0;
+                            }
+                            pageQuatre();
+                        }, 1);
+                        
+                    }        
+                }, 200);
+            }
+
+            function annuler() {
+                moving = true;
+                pageQuatre();
+                    function pageQuatre(params) {
+                        setTimeout(() => {
+                            if (deg2 < 0) {
+                                deg2+=1.5;
+                                document.querySelector("#blockpage4").style.transform = "rotateY("+deg2+"deg)";
+                                if (deg2 < -90 ) { 
+                                    document.querySelector("#blockpage4").style.zIndex = "3";
+                                    
+                                }
+                                if (deg2 > -90 ) { 
+                                    document.querySelector("#blockpage4").style.zIndex = "0";
+                                    document.querySelector("#page4 div").removeAttribute("hidden","");
+                                    document.querySelector("#page4 h4").removeAttribute("hidden","");
+                                }
+                            }else{
+                                deg2 = 0;
+                                document.querySelector("#blockpage4").style.transform = "rotateY("+deg2+"deg)";
+                                moving = false;
+                                return 0;
+                            }
+                            pageQuatre();
+                        }, 1);
+                        
+                    }    
+                setTimeout(() => {
+                    pageDeuxEtTrois();
+                    function pageDeuxEtTrois(params) {
+                        setTimeout(() => {
+                            if (deg < 0) {
+                                deg+=1.5;
+                                document.querySelector("#blockpage2").style.transform = "rotateY("+deg+"deg)";
+                                document.querySelector("#blockpage3").style.transform = "rotateY("+deg+"deg)";
+                                if (deg < -90 ) { 
+                                    document.querySelector("#blockpage3").style.zIndex = "3"; 
+                                }
+                                if (deg > -90 ) { 
+                                    document.querySelector("#blockpage3").style.zIndex = "0"; 
+                                }
+                            }else{
+                                deg = 0;
+                                document.querySelector("#blockpage2").style.transform = "rotateY("+deg+"deg)";
+                                document.querySelector("#blockpage3").style.transform = "rotateY("+deg+"deg)";
+                                moving = false;
+                                return 0;
+                            }
+                            pageDeuxEtTrois();
+                        }, 1);
+                        
+                    }
+                }, 200);
+            }
+            var prev = document.querySelector("#preview");
+            var text = document.querySelector("#desctext");
+            function validateQuest() {
+                img = document.querySelector("#image");
+                text = document.querySelector("#desctext");
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", "validateQuest.php?nomIMG="+img.files[0].name+"&descIMG="+text.value+"&idUtil="+<?php echo $_SESSION["id"]?>+"&idQuetesUtil="+prev.getAttribute("data-userquestid"), true);
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // document.querySelector("#valider").innerHTML = this.responseText
+                        document.location.href="/QuestForGreen/Quest/";
+                    }
+                }
+                xmlhttp.send();
             }
         </script>
     </body>

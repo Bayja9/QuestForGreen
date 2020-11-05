@@ -22,7 +22,7 @@ body {
 #livre {
     position: relative;
     width: 1342px;
-    height: 90%;
+    height: 845px;
     margin: auto;
 
     background-color: gray;
@@ -70,7 +70,7 @@ h4{
     
     position: relative;
     padding: 0 10px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 #ligne{
@@ -110,17 +110,26 @@ h4{
     right: unset;
 }
 
-#blockpage2 , #blockpage3 {
-    width: 1290px;
+#blockpage2 , #blockpage3, #blockpage4{
+    transform-origin: left;
+    width: 645px;
     z-index: 2;
 }
 #blockpage3 {
     z-index: 1;
 }
-
-#page2, #page3{
+#blockpage4 {
+    z-index: 0;
+}
+#page2, #page3, #page4{
     float: right;
 }
+
+#page2 #questInfo {
+    margin-bottom: 4px;
+}
+
+
 #page3{
     transform: rotateY(180deg);
 }
@@ -134,10 +143,275 @@ h4{
     left: 50px;
     position: relative;
     width: 86%;
+    height: 63px;
+    overflow-y: auto;
+}
+
+#questInfo::-webkit-scrollbar{
+    width: 7px;
+    background-color: transparent;
+
+}
+
+#questInfo::-webkit-scrollbar-thumb{
+    width: 5px;
+    background-color: grey;
+    border-radius: 5px;
+    
+}
+
+#questInfo::-webkit-scrollbar-button{
+    background-color: grey;
+    border-radius: 5px;
+    height: 7px;
 }
 
 #questValue {
     position: relative;
-    top: -57px;
+    top: -10px;
+    left: 16px;
+    float: right;
+}
+
+#livre label {
+    margin-bottom: 2px;
+}
+#page3 #questTitle {
+    margin-top: 53px;
+}
+#page3 .done {
+    margin-top: 53px;
+}
+.done #questTitle {
+    margin-top: 0 !important;
+}
+.done{
+    border-radius: 25px;
+    padding: 0px 35px 0px 20px;
+    background-color: lightgreen;
+    transition: transform 0.3s ease-in-out;
+    z-index: 4;
+    transform: scale(0.95);
+}
+.done:hover{
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+
+}
+#fade{
+    position: absolute;
+    transform: translate(35px, -56px);
+    background: transparent;
+    box-shadow: inset 0 0 5px 5px #fff6d5;
+    width: 442px;
+    height: 50px;
+}
+
+#noquest {
+    height: 65px;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.plus {
+    position: relative;
+    top: -75px;
+    left: 79px;
+
+    color: green;
+    transition: all 100ms ease-in-out;
+}
+
+.plus:hover {
+    transform: scale(1.5);
+    transition: all 100ms ease-in-out;
+}
+
+.moin {
+    position: relative;
+    top: -40px;
     left: 65px;
+
+    color: red;
+    transition: all 100ms ease-in-out;
+}
+
+.moin:hover {
+    transform: scale(1.5);
+    transition: all 100ms ease-in-out;
+}
+
+#confirmer {
+    font-weight: bold;
+    font-size: 20px;
+    
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    background: lightgreen;
+    height: fit-content;
+    width: fit-content;
+
+    border: none;
+    border-radius: 35px;
+
+    padding: 25px 80px;
+    margin: 25px;
+    color: white;
+    text-shadow: 0 0 10px green;
+    letter-spacing: 1px;
+    
+    opacity: 0%;
+    transition: opacity 100ms ease-in;
+    z-index: 5;
+}
+
+#uploadIMG {
+    position: relative;
+    margin: 22px auto 37px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#uploadIMG img{
+    position: absolute;
+    z-index: 0;
+    border-radius: 5px;
+}
+#image {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    transition: filter 100ms ease-in-out;
+}
+
+#imgLabel:hover ~ img {
+    filter: blur(10px);
+    transition: filter 100ms ease-in-out;
+}
+#imgLabel:hover span{
+    transform: scale(1.2);
+    transition: transform 100ms ease-in;
+}
+#img span{
+    transition: transform 100ms ease-in;
+}
+#imgLabel {
+    position: relative;
+
+    color: white;
+    text-shadow: 0 0 5px black;
+
+    font-size: 20px;
+    font-weight: bold;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 30px solid grey;
+
+    
+    z-index: 1;
+}
+
+#formQuete{
+    display: block;
+    z-index: -1;
+    
+    width: 650px;
+    height: 800px;
+}
+
+#preview{
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#desctext {
+    width: 400px;
+    height: 250px;
+    display: flex;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+    outline: none;
+    transition: all 300ms cubic-bezier(0.6, -0.73, 0.57, 2.1);
+    resize: none;
+}
+#desctext:focus{
+    border-radius: 15px;
+    border: 2px solid black;
+    transform: scale(1.05);
+    transition: all 300ms cubic-bezier(0.6, -0.73, 0.57, 2.1);
+}
+#desctext::-webkit-scrollbar{
+    width: 7px;
+    background-color: transparent;
+
+}
+
+#desctext::-webkit-scrollbar-thumb{
+    width: 5px;
+    background-color: grey;
+    border-radius: 5px;
+    
+}
+
+#desctext::-webkit-scrollbar-button{
+    background-color: transparent;
+    border-radius: 5px;
+    height: 7px;
+}
+
+#formQuete button {
+    position: absolute;
+    bottom: 25px;
+    width: 220px;
+    padding: 25px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 75px;
+    text-align: center;
+    transition: transform 100ms ease-in;
+
+}
+
+#formQuete button:hover {
+    transform: scale(1.1);
+    transition: transform 100ms ease-in;
+}
+
+#annuler{
+    left: 50px;
+
+    background-color: lightcoral;
+    color: white;
+    text-shadow: 0 0 10px red;
+}
+#valider{
+    right: 50px;
+
+    background-color:lightgreen;
+    color: white;
+    text-shadow: 0 0 10px green;
+}
+#h2quest {
+    width: fit-content;
+    margin: auto;
+    background-color: grey;
+    padding: 10px 20px;
+    z-index: 1;
+    position: relative;
+}
+#formQuete #ligne {
+    top:33px;
 }

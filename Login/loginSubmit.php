@@ -37,7 +37,11 @@
                     {
                         $_SESSION['id'] = $data['id_utilisateur'];
                         $_SESSION['email'] = $data['mail_utilisateur'];	
-                        $_SESSION['pseudo'] = $data['username_utilisateur'];	
+                        $_SESSION['pseudo'] = $data['username_utilisateur'];
+                        $_SESSION['xp'] = $data['xp_utilisateur'];
+                        $_SESSION['point'] = $data['points_utilisateur'];	
+
+
                         echo'<div class="alert alert-success">Authentification Réussi</div>';
                     }
                     else
