@@ -14,7 +14,7 @@
         <a href="badges_admin.php"><button name="retour" class="btn btn-primary">Retour</button></a>
             <?php
                 $id_badge=$_POST['idbadge'];
-                $o=new badge((integer)$id_badge,"","","","","","","","","","","","","","");
+                $o=new badge((integer)$id_badge,"","","","","");
                 $unbadge=$o->affiche_badge_total($o,$bdd);
                 $_SESSION['id_badge']=(int)$id_badge;
             ?>
